@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-09-05T00:41:30.772Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 OPR/101.0.0.0" etag="NrcZciyWzEcHIknZjc1D" version="21.7.2" type="github" pages="13">
+<mxfile host="app.diagrams.net" modified="2023-09-05T00:42:33.006Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 OPR/101.0.0.0" etag="hXe8Z0lrFJRbQNHCXGcG" version="21.7.2" type="github" pages="13">
   <diagram name="Login celular" id="GVTlkyY-4-1J9gCwD_GB">
     <mxGraphModel dx="1393" dy="797" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -712,7 +712,7 @@
             <mxPoint x="535.5" y="116.44" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kqvaC0UfAGKRDwOEQM-2-10" value="Estantes" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" vertex="1" parent="1">
+        <mxCell id="kqvaC0UfAGKRDwOEQM-2-10" value="Biblioteca" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" vertex="1" parent="1">
           <mxGeometry x="369" y="230" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="kqvaC0UfAGKRDwOEQM-2-11" value="Minha Estante" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
