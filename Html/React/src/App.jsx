@@ -1,35 +1,39 @@
 import { useState } from "react"
+import { TodoNewForm } from "./TodoNewForm"
+import { TodoList } from "./TodoList"
 import "./style.css"
 
 export default function App(){
-  const [newItem, setNewItem] = useState("")
-  
 
+  const [todo, setNewTodo] = useState([])
+  function addTodos(title){
+    setNewTodo(currentTodo=>{
+      return [
+        ...currentTodo,{id: crypto.randomUUID(),title,completed:false},
+      ]
+    })
+  }
+function toggleTodo(id, completed){
+  setNewTodo(currentTodo=>{
+    return currentTodo.map(todos=>{
+    if (todos.id===id){
+      return {...todos, completed}
+    }
+    return todos
+  })
+  })
+}
+function deleteTodo(id){
+  setNewTodo(currentTodo=>{
+    return currentTodo.filter(todos=> todos.id !== id)
+  })
+}
   return (
   
     <>
-  <form className="new-item-form">
-    <div className="form-row">
-      <label htmlFor="item">New Item</label>
-      <input type="text" id="item"/>
-      </div>
-      <button className="btn">Add</button>
-    </form>
+    <TodoNewForm onSubmit={addTodos}/>
     <h1 className="header">Todo List</h1>
-    <ul>
-      <li>
-        <label>Doc
-          <input type="checkbox"/>
-        </label>
-        <button className="danger">delete</button>
-      </li>
-      <li>
-        <label>Doc
-          <input type="checkbox"/>
-        </label>
-        <button className="danger">delete</button>
-      </li>
-    </ul>
+    <TodoList todo={todo}/>
     </>
   )  
   }
