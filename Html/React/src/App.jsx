@@ -33,7 +33,7 @@ function deleteTodo(id){
     <>
     <TodoNewForm onSubmit={addTodos}/>
     <h1 className="header">Todo List</h1>
-    <TodoList todo={todo}/>
+    <TodoList todo={todo} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/>
     </>
   )  
   }

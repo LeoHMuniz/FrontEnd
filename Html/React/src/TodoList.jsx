@@ -1,20 +1,16 @@
-import {userState} from "react"
+import { TodoItem } from "./TodoItem"
 
-export function TodoList({todo}){
+export function TodoList({todo, toggleTodo, deleteTodo}){
     return(<ul>
       {todo.length === 0 && "No todos"}
       {todo.map(todos =>{
-        return (<li key={todos.id}>
-        <label>  
-          <input 
-          type="checkbox"
-          checked={todos.completed}
-          onChange={e=>toggleTodo(todos.id, e.target.checked)}
-          />
-          {todos.title}
-          </label>
-        <button onClick={()=>deleteTodo(todos.id)} className="danger">delete</button>
-      </li>
+        return (
+        <TodoItem
+        {...todos}
+        key={todos.id}
+        toggleTodo={toggleTodo}
+        deleteTodo={deleteTodo}
+        />
         )
       })}
       </ul>)
