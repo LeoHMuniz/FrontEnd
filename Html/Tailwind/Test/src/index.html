@@ -6,22 +6,26 @@
     <link href="/dist/output.css" rel="stylesheet">
     <title>Teste</title>
 </head>
-<body>
+<body id="body" class="bg-gray-600">
     <header class="fixed w-full  mb-4">
         <div class="bg-cyan-600 p-2 leading-8 flex place-content-around">
             <div>
                 Hola
             </div>
             <ul class="list-none flex space-x-8">
-                <a href="#" class="hover:text-white transition-all delay:500"><li>Home</li></a>
-                <a href="#" class="hover:text-white transition-all delay:500"><li>Day</li></a>
-                <a href="#" class="hover:text-white transition-all delay:500"><li>Space</li></a>
+                <a href="#" class="hover:text-white transition-all "><li>Home</li></a>
+                <a href="#" class="hover:text-white transition-all "><li>Day</li></a>
+                <a href="#" class="hover:text-white transition-all "><li>Space</li></a>
         </ul>
     </div>
     </header>
-    <main class="p-12 mx-[10%] h-full text-center">
+    <main class="p-20 mx-[10%] h-full text-center items-center bg-white">
         <h2 class="text-red-800">Holá</h2>
+        <div class="h-60 border-black border-solid border-2  m-auto">
+            <div id="div-container"class="w-[80%] h-[80%] border-black border-solid border-b-2 border-x-2 m-auto align-middle"></div>
+            <button id ="btn" class="mt-1 p-1 px-2 border-solid border-2 border-red-600 rounded-2xl hover:bg-red-600 hover:text-white transition-all">Hello</button>
+        </div>
     </main>
-    
+    <script src = "tramite.js"></script>
 </body>
 </html>
