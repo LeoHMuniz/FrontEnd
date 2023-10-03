@@ -1,12 +1,18 @@
-$btnon.addEventListener('click', async()=>{
-    $valor=document.getElementById("valor");
-    $mContainer=document.getElementById("morty-container");
-    const result = await fetch (`https://rickandmortyapi.com/api/character/${valor.value}`);
-    const resultadoComJson = await result.json();
-    console.log(resultadoComJson)
+$btnon=document.getElementById("btn-on");
+$valor=document.getElementById("valor");
+$image=document.getElementById("image");
+$btnon.addEventListener('click', async ()=>{
 
+    event.preventDefault();
+    const value=$valor.value;
+    const resposta=await fetch(`https://rickandmortyapi.com/api/character/${value}`);
+    respostaJason=await resposta.json();
+    console.log(respostaJason);
+    
     const text = document.createElement("p");
-    text.innerText = resultadoComJson.name;
+    
+$mContainer.textContent = `${JSON.stringify(respostaJason.name)}`;
+    $image.src=respostaJason.image; 
     $mContainer.appendChild(text);
+
 })
-        

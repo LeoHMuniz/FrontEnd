@@ -8,7 +8,6 @@ const url = "https://jsonplaceholder.typicode.com/posts";
 $btn.addEventListener('click', async()=>{
     const response = await fetch(url);
     console.log(response);
-
     const data = await response.json();
     console.log(data);
     $container.classList.add("overflow-auto");
@@ -26,15 +25,15 @@ $btn.addEventListener('click', async()=>{
        
         $container.appendChild(div);
 });
-$btnon.addEventListener('click', async()=>{
-    const result = await fetch (`https://rickandmortyapi.com/api/character/${valor.value}`);
-    const resultadoComJson = await result.json();
-    console.log(resultadoComJson);
+// $btnon.addEventListener('click', async()=>{
+//     const result = await fetch (`https://rickandmortyapi.com/api/character/${valor.value}`);
+//     const resultadoComJson = await result.json();
+//     console.log(resultadoComJson);
 
-    const text = document.createElement("p");
-    text.innerText = resultadoComJson.name;
-    $mContainer.appendChild(text);
-})
+//     const text = document.createElement("p");
+//     text.innerText = resultadoComJson.name;
+//     $mContainer.appendChild(text);
+// })
     })
 
 
