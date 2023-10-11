@@ -1,8 +1,10 @@
 import style from './Header.module.css'
-export function Header(){
-    return(
-    <header className={style.header}>
-        <strong>Leo Zika</strong>
-    </header>
+import logo from '../assets/logo-feed.svg'
+
+export function Header() {
+    return (
+        <header className={style.header}>
+            <img src={logo} alt="" />
+        </header>
     )
 }
