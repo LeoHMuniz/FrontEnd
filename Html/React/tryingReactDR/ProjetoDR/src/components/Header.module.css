@@ -1,0 +1,28 @@
+.header{
+    padding:2rem;
+    margin:0;
+    height:3rem;
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.list{
+    list-style-type:none;
+    display:flex;
+
+}
+
+.list li{
+    margin-right:1rem;
+    
+}
+.list a{
+    transition:all .2s ease;
+    
+}
+
+.list a:hover{
+    color:var(--gray-400);
+}

@@ -1,0 +1,29 @@
+.carroussel{
+    margin-top: 1rem;
+    background-color: red;
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    overflow: hidden;
+    gap:5%;
+    position:relative;
+}
+
+.carroussel img{
+    width:100%;
+    margin:0 33%;
+} 
+
+.before{
+    position:absolute;
+    margin:10rem 97% 0 3%;
+    display:flex;
+    flex-direction: row;
+}
+
+.after{
+    position:absolute;
+    margin:10rem 3% 0  97%;
+    display:flex;
+    flex-direction: row;
+}
