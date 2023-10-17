@@ -3,3 +3,8 @@
   text-align: center;
 }
 
+.cardContainer{
+  margin:2rem auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}

@@ -1,0 +1,20 @@
+.card {
+    border: 1px solid black;
+    margin: 2rem 4rem;
+    width: 35rem;
+    height: 40rem;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: rgb(41, 40, 51);
+    background: linear-gradient(
+        2700deg,
+        rgba(41, 40, 51, 1) 1%,
+        rgba(188, 194, 195, 1) 100%,
+        rgba(0, 212, 255, 1) 100%,
+        rgba(2, 0, 36, 1) 100%
+    );
+}
+
+.title {
+    margin: 1rem 0;
+}
