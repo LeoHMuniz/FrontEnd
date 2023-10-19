@@ -1,21 +1,19 @@
 import { useState } from "react"
 import styles from './Carousel.module.css'
 
+
 export function Carousel() {
     const [choice, setChoice] = useState(null);
 
-    const [newClass, setNewClass] = useState(false);
+    // const [newClass, setNewClass] = useState(false);
 
 
 
-    function handleChoice(e){
+    function handleChoice(e) {
         setChoice(e.target.src)
 
     }
 
-    function handleClass(e){
-        setNewClass(current => !current)
-    }
 
 
     const images = [{
@@ -37,23 +35,24 @@ export function Carousel() {
         <><div className={styles.carouselContainer}>
             {images.map(image => {
                 return (
-                    <div className={styles.imgContainer} 
-                    key={image.id}
-                    onClick={handleClass}>
-                        <img src={image.imageUrl}
-                            alt=""
+                    <div className={styles.imgContainer}
+                        key={image.id}>
+                        <img
+                            src={image.imageUrl}
+                            alt={image.id}
                             onClick={handleChoice}
+                            className={`${image.imageUrl == choice ? `${styles.Active}` : null} ${styles.imagem}`}
                         />
                     </div>
                 )
             })}</div>
-                <div className={styles.chosen}>
-                <img 
-                        src={choice}
-                        alt=""
-                         />
+            <div className={styles.chosen}>
+                <img
+                    src={choice}
+                    alt=""
+                />
             </div>
-                    
+
         </>
     )
 

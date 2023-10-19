@@ -22,10 +22,13 @@ img{
     margin-top:2rem;
 }
 
-.imgContainer{
+.imagem{
     filter: grayscale();
 }
 
+.Active{
+    filter: none;
+}
 
 
 
