@@ -1,3 +1,7 @@
+body{
+    background-color: rgb(63, 63, 63);
+}
+
 .carouselContainer{
     display:grid;
     grid-template-columns: repeat(3, 1fr);
