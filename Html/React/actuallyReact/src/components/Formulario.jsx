@@ -6,28 +6,34 @@ export function Formulario() {
     const [age, setAge] = useState("")
     const [city, setCity] = useState("")
     const [date, setDate] = useState("")
+    const post = []
 
-    function handleInput(e){
-        if(
-            e.target.name == "name") {setName(e.target.value)}
-            if(
-            e.target.name == "lastName") {setLastName(e.target.value)}
-            if(
-            e.target.name == "age") {setAge(e.target.value)}
-            if(
-            e.target.name == "city"){setCity(e.target.value)}
-        
-            const date = new Date()
-            const formatedDate = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear() + ', às ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getUTCSeconds()
-            setDate(formatedDate)
-            
+    function handleInput(e) {
+        if (
+            e.target.name == "name") { setName(e.target.value) }
+        if (
+            e.target.name == "lastName") { setLastName(e.target.value) }
+        if (
+            e.target.name == "age") { setAge(e.target.value) }
+        if (
+            e.target.name == "city") { setCity(e.target.value) }
+
+        const date = new Date()
+        const formatedDate = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear() + ', às ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getUTCSeconds()
+        setDate(formatedDate)
+
     }
-    
-    function handleSubmit(){
-        isActive
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        post.push(post[0] > 1 ? post[0] + 1 : 1)
+        post.name = name
+        post.lastName = lastName
+        post.age = age
+        post.city = city
     }
-    
-    function handleErase(){
+
+    function handleErase() {
         setName("")
         setLastName("")
         setAge("")
@@ -36,30 +42,31 @@ export function Formulario() {
     }
 
     return (
+
         <main>
             <div className={styles.formsContainer}>
                 <h1>Formulário</h1>
                 <form action="" className={styles.forms}>
-                    <input 
-                    type="text"
-                    name="name" 
-                    placeholder="Name" 
-                    onChange={handleInput}/>
-                    <input 
-                    type="text"
-                    name="lastName" 
-                    placeholder="Last Name" 
-                    onChange={handleInput}/>
-                    <input 
-                    type="number"
-                    name="age" 
-                    placeholder="Age" 
-                    onChange={handleInput}/>
-                    <input 
-                    type="text"
-                    name="city" 
-                    placeholder="City" 
-                    onChange={handleInput}/>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        onChange={handleInput} />
+                    <input
+                        type="text"
+                        name="lastName"
+                        placeholder="Last Name"
+                        onChange={handleInput} />
+                    <input
+                        type="number"
+                        name="age"
+                        placeholder="Age"
+                        onChange={handleInput} />
+                    <input
+                        type="text"
+                        name="city"
+                        placeholder="City"
+                        onChange={handleInput} />
                     <select
                         name="color"
                         id="">
@@ -77,19 +84,29 @@ export function Formulario() {
                         </option>
                     </select>
                     <button type="submit" onClick={handleSubmit}>Salvar informações</button>
-                    <button type="submit" onClick={handleErase}>Limpar 
-                    informações</button>
+                    <button type="submit" onClick={handleErase}>Limpar
+                        informações</button>
                 </form>
                 <hr />
                 <div className={styles.try}>
-                <span>{`Nome: ${Name} `}</span>
-                <span>{`Sobrenome: ${lastName} `}</span>
-                <span>{`Idade: ${age} `}</span>
-                <span>{`Cidade: ${city} `}</span>
-                <span>{`Data da alteração: ${date} `}</span>
+                    <span>{`Nome: ${Name} `}</span>
+                    <span>{`Sobrenome: ${lastName} `}</span>
+                    <span>{`Idade: ${age} `}</span>
+                    <span>{`Cidade: ${city} `}</span>
+                    <span>{`Data da alteração: ${date} `}</span>
                 </div>
             </div>
-            </main>
+            <div className={styles.postContainer}>
+                {
+                    post.map(post => {
+                        <div className={styles.card}>
+                            <h3>`{name} {lastName}`</h3>
+                            <p>`from ${city}`</p>
+                        </div>
+                    })
+                }
+            </div>
+        </main>
     )
 
 }

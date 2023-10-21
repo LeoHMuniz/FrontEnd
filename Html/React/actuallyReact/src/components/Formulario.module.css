@@ -38,3 +38,10 @@ button{
 .try span{
     margin-bottom:.3rem;
 }
+
+.postContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin:1rem auto;
+}
