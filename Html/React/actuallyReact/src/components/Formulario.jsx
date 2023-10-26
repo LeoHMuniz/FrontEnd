@@ -2,18 +2,10 @@ import { useRef, useState } from "react";
 
 import styles from './Formulario.module.css'
 export function Formulario() {
-    const [Name, setName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [age, setAge] = useState("")
-    const [city, setCity] = useState("")
-    const [date, setDate] = useState("")
-    const [getName, setGetName] = useState("")
-    const [getLastName, setGetLastName] = useState("")
-    const [getAge, setGetAge] = useState("")
-    const [getCity, setGetCity] = useState("")
-    const [getDate, setGetDate] = useState("")
-    const [card, setCard] = useState(false)
-
+    const [formData, setFormData] = useState({})
+    const [formResult, setFormResult] = useState([{}])
+    const [date, setDate] = useState('')
+    
     const inputName = useRef('')
     const inputLastName = useRef('')
     const inputAge = useRef('')
@@ -21,58 +13,26 @@ export function Formulario() {
     const inputDate = useRef('')
     const inputCard = useRef('')
 
-    function handleInput(e) {
-        if (
-            e.target.name == "name") { setName(e.target.value) }
-        if (
-            e.target.name == "lastName") { setLastName(e.target.value) }
-        if (
-            e.target.name == "age") { setAge(e.target.value) }
-        if (
-            e.target.name == "city") { setCity(e.target.value) }
+    function handleInput(e,type) {
+        const {value} = e.target;
+        setFormData((prevState) => ({...prevState, [type]:value}))
 
         const date = new Date()
         const formatedDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ', às ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getUTCSeconds()
         setDate(formatedDate)
     }
 
-    function clearData() {
-        inputName.current.value = ""
-        inputLastName.current.value = ""
-        inputAge.current.value = ""
-        inputCity.current.value = ""
-
-        setName('')
-        setLastName('')
-        setAge('')
-        setCity('')
-    }
-
-    const contagem = [{
-        nome: null,
-        sobrenome: null,
-        idade: null,
-        cidade: null
-    }]
 
     function handleSubmit(e) {
         e.preventDefault();
-        setCard(true)
-        setGetName(Name)
-        setGetLastName(lastName)
-        setGetAge(age)
-        setGetCity(city)
-        setGetDate(date)
+        setFormResult((prevState)=> ([...prevState, {...formData}]))
         setDate("")
-        clearData()
-        contagem.push(...{ nome: Name, sobrenome: lastName, idade: age, cidade: city })
-        console.log(contagem)
     }
 
 
     function handleErase(e) {
         e.preventDefault();
-        clearData()
+
     }
 
     return (
@@ -86,25 +46,25 @@ export function Formulario() {
                         ref={inputName}
                         name="name"
                         placeholder="Name"
-                        onChange={handleInput} />
+                        onChange={(e)=>{handleInput(e,'name')}}/>
                     <input
                         type="text"
                         ref={inputLastName}
                         name="lastName"
                         placeholder="Last Name"
-                        onChange={handleInput} />
+                        onChange={(e)=>{handleInput(e,'lastName')}} />
                     <input
                         type="number"
                         ref={inputAge}
                         name="age"
                         placeholder="Age"
-                        onChange={handleInput} />
+                        onChange={(e)=>{handleInput(e,'age')}} />
                     <input
                         type="text"
                         ref={inputCity}
                         name="city"
                         placeholder="City"
-                        onChange={handleInput} />
+                        onChange={(e)=>{handleInput(e,'city')}} />
                     <select
                         name="color"
                         id="">
@@ -126,32 +86,32 @@ export function Formulario() {
                 </form>
                 <hr />
                 <div className={styles.try}>
-                    <span>{`Nome: ${Name} `}</span>
-                    <span>{`Sobrenome: ${lastName} `}</span>
-                    <span>{`Idade: ${age} `}</span>
-                    <span>{`Cidade: ${city} `}</span>
-                    <span>{`Data da alteração: ${date} `}</span>
+                    <span>{`Nome: ${formData.name} `}</span>
+                    <span>{`Sobrenome: ${formData.lastName} `}</span>
+                    <span>{`Idade: ${formData.age} `}</span>
+                    <span>{`Cidade: ${formData.city} `}</span>
                 </div>
             </div>
             <div className={styles.postContainer}>
                 {
-                    contagem.map(dados => {
+                    formResult.map((results,i) => {
+                        return(
                         <div className={styles.cardUnit}>
-                            <span>{`Nome: ${dados.nome} `}</span>
-                            <span>{`Sobrenome: ${dados.sobrenome} `}</span>
-                            <span>{`Idade: ${dados.idade} `}</span>
-                            <span>{`Cidade: ${dados.cidade} `}</span>
+                            <span>{`Nome: ${results.name} `}</span>
+                            <span>{`Sobrenome: ${results.lastName} `}</span>
+                            <span>{`Idade: ${results.age} `}</span>
+                            <span>{`Cidade: ${results.city} `}</span>
 
-                        </div>
-                    })
-                    // card ? <div className={styles.cardUnit}>
-                    //     <span>{`Nome: ${getName} `}</span>
-                    //     <span>{`Sobrenome: ${getLastName} `}</span>
-                    //     <span>{`Idade: ${getAge} `}</span>
-                    //     <span>{`Cidade: ${getCity} `}</span>
-                    //     <span>{`Data da alteração: ${getDate} `}</span>
+                        </div>)})
+
+                    // <div className={styles.cardUnit}>
+                    //     <span>{`Nome: ${Name} `}</span>
+                    //     <span>{`Sobrenome: ${lastName} `}</span>
+                    //     <span>{`Idade: ${age} `}</span>
+                    //     <span>{`Cidade: ${city} `}</span>
+                    //     <span>{`Data da alteração: ${date} `}</span>
                     // </div>
-                    //     : ""
+                        
                 }
             </div>
         </main >
