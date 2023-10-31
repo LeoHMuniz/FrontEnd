@@ -9,6 +9,7 @@
     --gray-900: #121214;
 
     --green-10: #20d39dc3;
+    --green-20: #129a72c3;
 }
 
 body{
@@ -17,3 +18,4 @@ body{
     box-sizing: border-box;
     background-color: var(--gray-300);
 }
+

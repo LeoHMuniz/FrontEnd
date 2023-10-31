@@ -12,10 +12,11 @@ p {
     margin: 3rem 0 1rem 2rem;
     padding: 0.5rem;
     border-radius: 0.3rem;
+    display: inline-block;
 }
 
 .standardButton:hover{
-    background-color: #129a72c3;
+    background-color: var(--green-20);
 }
 
 .cardContainer {

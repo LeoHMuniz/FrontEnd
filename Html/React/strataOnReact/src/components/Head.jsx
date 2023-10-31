@@ -74,6 +74,9 @@ export function Head() {
 
                 }
             </div>
+            
+            <a href="#" className={styles.standardButton} title='Portifolio'>Portifólio completo!</a>
+
         </section>
     )
 }
