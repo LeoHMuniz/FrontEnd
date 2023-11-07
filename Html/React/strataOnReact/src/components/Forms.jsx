@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Forms.module.css'
 
 export function Forms() {
@@ -21,10 +21,10 @@ export function Forms() {
         setCoin(!coin)
     }
 
-    function eraseCamps(){
-        nameInput.value=""
-        adressInput.value=""
-        messageInput.value=""
+    function eraseCamps() {
+        nameInput.value = ""
+        adressInput.value = ""
+        messageInput.value = ""
     }
 
     return (
@@ -45,18 +45,18 @@ export function Forms() {
                     >Click on me!
                     </a>
                 </div>
-                <div className={styles.resultSide}>
-                    {
-                        coin ?
-                            <div>
-                                <p><b>Name:</b> {name} </p>
-                                <p><b>Adress:</b> {adress} </p>
-                                <p><b>Description:</b> {description} </p>
-                                </div>
-                                :""
-                    }
-                            </div>
             </form>
+            <div className={styles.resultSide}>
+                {
+                    coin ?
+                        <div className={styles.resultsContainer}>
+                            <p><b>Name:</b> {name} </p>
+                            <p><b>Adress:</b> {adress} </p>
+                            <p><b>Description:</b> {description} </p>
+                        </div>
+                        : ""
+                }
+            </div>
         </section>
     )
 
