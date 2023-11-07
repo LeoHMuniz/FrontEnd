@@ -15,6 +15,12 @@ export function Forms() {
         setDescription(messageInput.value)
         toggleCoin()
         eraseCamps()
+
+    }
+
+    function fixData(e) {
+        e.preventDefault()
+        toggleCoin()
     }
 
     function toggleCoin() {
@@ -28,7 +34,7 @@ export function Forms() {
     }
 
     return (
-        <section className={styles.formsSection}>
+        <section className={coin ? `${styles.formsSection} ${styles.formsOpened}` : `${styles.formsSection}`}>
             <form
                 action="#">
                 <div className={styles.formsSide}>
@@ -50,6 +56,7 @@ export function Forms() {
                 {
                     coin ?
                         <div className={styles.resultsContainer}>
+                            <a href='#' className={styles.resetSection} onClick={fixData}>Fix data</a>
                             <p><b>Name:</b> {name} </p>
                             <p><b>Adress:</b> {adress} </p>
                             <p><b>Description:</b> {description} </p>

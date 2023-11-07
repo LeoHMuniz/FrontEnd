@@ -8,7 +8,7 @@ p {
     border: var(--green-10);
     background-color: var(--green-10);
     text-decoration: none;
-    color: #fff;
+    color: var(--gray-100);
     margin: 3rem 0 1rem 2rem;
     padding: 0.5rem;
     border-radius: 0.3rem;

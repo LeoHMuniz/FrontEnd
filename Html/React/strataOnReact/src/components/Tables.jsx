@@ -1,4 +1,5 @@
 import styles from './Tables.module.css'
+import iconFacebook from '../assets/iconFacebook.svg'
 
 export function Tables() {
 
@@ -6,7 +7,27 @@ export function Tables() {
 
     const secondList = [1, 2]
 
-    const socialMedia = ['facebook', 'X', 'youtube', 'instagram', 'amazon']
+    const socialMedia = [{
+        name: 'facebook',
+        url: 'https://pt-br.facebook.com',
+        icon: iconFacebook
+    }, {
+        name: 'X',
+        url: 'https://twitter.com/?lang=pt-br',
+        icon: iconFacebook
+    }, {
+        name: 'youtube',
+        url: 'https://www.youtube.com',
+        icon: iconFacebook
+    }, {
+        name: 'instagram',
+        url: 'https://www.instagram.com',
+        icon: iconFacebook
+    }, {
+        name: 'amazon',
+        url: 'https://www.amazon.com.br',
+        icon: iconFacebook
+    }]
 
     const itemsOnTable = [
         {
@@ -67,8 +88,8 @@ export function Tables() {
 
                         list.map(itens => {
                             return (
-                                <li>Linha{itens}</li>
-
+                                <li>Linha{`${itens}, ${itens.icon}`}</li>
+                                
                             )
                         })
 
@@ -79,7 +100,7 @@ export function Tables() {
                     {
                         socialMedia.map(icons => {
                             return (
-                                <li>{icons}</li>
+                                <li>{icons.name}</li>
                             )
                         })
                     }

@@ -9,7 +9,9 @@ export function App() {
 
   return (
     <div className={Styles.fullContainer}>
+      <aside>
       <Side />
+      </aside>
       <div className={Styles.content}>
         <Head />
         <Forms />

@@ -9,7 +9,7 @@ export function Side(){
                 alt="" 
                 />
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa libero et incidunt reprehenderit ex, nemo vitae eum aliquam delectus inventore totam! Nesciunt quo voluptatibus voluptate alias, atque exercitationem consequuntur perferendis.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis temporibus odio veritatis at, beatae consectetur rem modi doloremque expedita recusandae facilis adipisci quaerat repudiandae? Dolore doloribus accusamus veritatis recusandae blanditiis?
                 </p>
             </div>
             <footer className={styles.sideFooter}>
