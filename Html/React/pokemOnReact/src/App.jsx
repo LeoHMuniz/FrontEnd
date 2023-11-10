@@ -6,6 +6,7 @@ function App() {
   const [coin, setCoin] = useState(false)
   const [pokemon, setPokemon] = useState({})
   const [pokemonName, setPokemonName] = useState('')
+  const [pokeHistory, setPokeHistory] = useState([])
 
   function getPokemonName() {
     setPokemonName(nomePokemon.value.toLowerCase())
@@ -22,10 +23,8 @@ function App() {
     const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
     setPokemon(await resposta.json())
     setCoin(true)
-    console.log(pokemon.types.map(pokemonTypes => {
-      console.log(pokemonTypes.type.name)
-    }))
-  }
+    setPokeHistory((prevState)=>[...prevState, pokemonName])
+    }
 
   return (
     <div className="bg-gray-600 h-screen w-full flex">
