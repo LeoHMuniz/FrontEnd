@@ -1,5 +1,6 @@
 import { useState, useRef } from "react"
 
+
 export function GettingPokemon() {
 
 
@@ -7,8 +8,23 @@ export function GettingPokemon() {
   const [pokemon, setPokemon] = useState({})
   const [pokemonName, setPokemonName] = useState('')
   const [pokeHistory, setPokeHistory] = useState([])
+  const [pokeTipo, setPokeTipo] = useState('')
   const [pokeHistoryUpdated, setPokeHistoryUpdated] = useState([])
   const nomeDoPokemon = useRef(null)
+  const backgroundTypes = {
+    bug: `bg-[url('./assets/pokeBackground/pokemonBug.jpg')]`,
+    dark: `bg-[url('./assets/pokeBackground/pokemonDark.jpg')]`,
+    dragon: `bg-[url('./assets/pokeBackground/pokemonDragon.jpg')]`,
+    electric: `bg-[url('./assets/pokeBackground/pokemonElectric.jpg')]`,
+    fairy: `bg-[url('./assets/pokeBackground/pokemonFairy.jpg')]`,
+    fire: `bg-[url('./assets/pokeBackground/pokemonFire.jpg')]`,
+    ghost: `bg-[url('./assets/pokeBackground/pokemonGhost.jpg')]`,
+    grass: `bg-[url('./assets/pokeBackground/pokemonGrass.jpg')]`,
+    ice: `bg-[url('./assets/pokeBackground/pokemonIce.jpg')]`,
+    poison: `bg-[url('./assets/pokeBackground/pokemonPoison.jpg')]`,
+    rock: `bg-[url('./assets/pokeBackground/pokemonRock.jpg')]`,
+    water: `bg-[url('./assets/pokeBackground/pokemonWater.jpg')]`
+  }
 
   function getPokemonName() {
     setPokemonName(nomePokemon.value.toLowerCase())
@@ -27,16 +43,18 @@ export function GettingPokemon() {
 
   async function getPokemon(pokemonName) {
     const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
-    setPokemon(await resposta.json())
+    const json = await resposta.json()
+    setPokemon(json)
     setCoin(true)
+    setPokeTipo(json.types[0].type.name)
+
     setPokeHistory((prevState) => [...prevState, pokemonName])
     setPokeHistoryUpdated(pokeHistory.filter((value, index) => pokeHistory.indexOf(value) == index))
   }
-
   return (
     <main className="flex flex-row gap-8">
       <div className="">
-        <div className='w-80 h-[30rem] mt-52 border justify-center border-gray-800 border-solid rounded bg-gray-400'>
+        <div className={`w-80 h-[30rem] mt-52 border justify-center border-gray-800 border-solid rounded ${backgroundTypes[pokeTipo]}`}>
           <header className='mx-auto my-8 w-full text-center'>
             <p>Welcome to my pokemOnReact!</p>
           </header>
@@ -46,7 +64,7 @@ export function GettingPokemon() {
                 src={coin ? pokemon.sprites.front_default : ""}
                 alt=""
               />
-              <button className="px-1 rounded border-solid border-gray-800 border flex h-fit">+</button>
+              {/* <button className="px-1 rounded border-solid border-gray-800 border flex h-fit">+</button> */}
             </div>
 
             <input type="text" placeholder='Name of the pokemon' className='text-center p-2 rounded ' onChange={getPokemonName} id="nomePokemon" ref={nomeDoPokemon} />
@@ -77,7 +95,7 @@ export function GettingPokemon() {
         {
           pokeHistoryUpdated.map((pokemonSearched, index) => {
             return (
-              <div key={index} className="w-40 bg-slate-300 rounded mb-0 p-1 text-center mt-2"><button onClick={() => handleHistory(pokemonSearched)}>{pokemonSearched}</button></div>
+              <div key={index} className="w-40 bg-slate-300 rounded mb-0 p-1 text-center mb-2"><button onClick={() => handleHistory(pokemonSearched)}>{pokemonSearched}</button></div>
             )
           })
         }
