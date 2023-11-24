@@ -4,11 +4,12 @@ import { HistoryPokemon } from './components/HistoryPokemon'
 function App() {
 
   return (
-    <div className="bg-gray-700 h-screen w-full">
+    <div>
       <GettingPokemon />
 
     </div>
   )
+  
 }
 
 export default App

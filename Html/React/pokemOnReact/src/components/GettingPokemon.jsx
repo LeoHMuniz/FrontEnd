@@ -11,6 +11,7 @@ export function GettingPokemon() {
   const [pokeType, setPokeType] = useState('')
   const [pokeHistoryUpdated, setPokeHistoryUpdated] = useState([])
   const [pokeTeam, setPokeTeam] = useState([])
+  const [modalMode, setModalMode] = useState(0)
   const [pokeTeamUpdated, setPokeTeamUpdated] = useState([])
   const nomeDoPokemon = useRef(null)
   const backgroundTypes = {
@@ -28,13 +29,15 @@ export function GettingPokemon() {
     water: `bg-[url('./assets/pokeBackground/pokemonWater.jpg')]`
   }
 
+  const background = `bg-[url('./assets/pokeBackground/background_pokemon.jpg')]`
+
   function getPokemonName() {
     setPokemonName(nomePokemon.value.toLowerCase())
   }
 
   function handleClick(event) {
     event.preventDefault()
-    pokemonName === "" ? alert('You gotta tell us a pokemon name') : getPokemon(pokemonName)
+    pokemonName === "" ? useModal('noRequest') : getPokemon(pokemonName)
   }
 
 
@@ -55,20 +58,33 @@ export function GettingPokemon() {
   }
 
   function addToTeam() {
-    setPokeTeam((prevState) => [...prevState, pokemon])
+    pokeTeam.length < 6 ? setPokeTeam((prevState) => [...prevState, pokemon]) : useModal('exceded')
+  }
+
+  function useModal(result) {
+    result == "exceded" ? setModalMode(1) : result == "noRequest" ? setModalMode(2) : setModalMode(0)
   }
 
   function getPokemonOut(event) {
     let toRemove = event.target.id
-    console.log(toRemove)
-    setPokeTeam(pokeTeam.splice(toRemove,1))
+    setPokeTeamUpdated(pokeTeam.splice(toRemove, 1))
+  }
+
+  function handleClose(){
+    setModalMode(0)
   }
 
   return (
     <>
-      <main className="flex flex-row justify-center align-middle gap-8">
+    <div className={modalMode!=0?`my-[21%] mx-[43%] flex w-80 h-60 bg-white absolute z-10 text-center justify-center flex-col rounded border border-solid border-gray-700`: `hidden`}>
+      <h2 className="mb-12">Olá!</h2>
+      <p className="mb-4 p-2 bg-gray-300">{modalMode==1?`Seu time pode conter somente até 6 pokemons!`:modalMode==2?`Você precisa nos dar um nome de pokemon!`:`Nada foi lançado`}</p>
+      <button className="p-2 w-fit mx-auto rounded bg-gray-200 outline-gray-100 hover:bg-gray-400 transition-colors duration-300" onClick={()=>handleClose()}>Entendi!</button>
+    </div>
+    <div className={`${background} h-screen bg-cover w-full ${modalMode?`blur-sm`:""}`}>
+      <main className={`filter-none flex flex-row justify-center align-middle gap-8`}>
         <div className="">
-          <div className={`w-80 h-[30rem] mt-52 border justify-center border-gray-200 border-solid rounded ${backgroundTypes[pokeType]}`}>
+          <div className={` w-80 h-[30rem] mt-52 border justify-center border-gray-200 border-solid rounded ${backgroundTypes[pokeType] ? backgroundTypes[pokeType] : `bg-red-700`}`}>
             <header className='mx-auto my-8 w-full text-center'>
               <p>Welcome to my pokemOnReact!</p>
             </header>
@@ -80,9 +96,9 @@ export function GettingPokemon() {
                 />
               </div>
 
-              <input type="text" placeholder='Name of the pokemon' className='text-center p-2 rounded ' onChange={getPokemonName} id="nomePokemon" ref={nomeDoPokemon} />
+              <input type="text" placeholder='Name of the pokemon' className='text-center p-2 rounded bg-gray-200 outline-gray-200' onChange={getPokemonName} id="nomePokemon" ref={nomeDoPokemon} />
               <div className="flex row gap-1 ">
-                <button type="submit" className='p-1 rounded bg-gray-400 hover:bg-gray-200 w-3/5 m-auto my-4 transition-colors ease-in-out duration-300' htmlFor="nomePokemon" onClick={handleClick}>Search</button>
+                <button type="submit" className='p-1 rounded bg-gray-800 text-white hover:bg-gray-400 hover:text-black w-3/5 m-auto my-4 transition-colors ease-in-out duration-300' htmlFor="nomePokemon" onClick={handleClick}>Search</button>
                 <button type="submit" className='p-1 rounded bg-orange-600 hover:bg-orange-400 w-3/5 m-auto my-4 transition-colors ease-in-out duration-300' onClick={addToTeam}>Get!</button>
               </div>
             </main>
@@ -112,7 +128,7 @@ export function GettingPokemon() {
           {
             pokeHistoryUpdated.map((pokemonSearched, index) => {
               return (
-                <div key={index} className="w-40 bg-slate-300 rounded mb-0 p-1 text-center mb-2"><button onClick={() => handleHistory(pokemonSearched)}>{pokemonSearched}</button></div>
+                <button key={index} className="w-40 bg-slate-300 rounded p-1 text-center mb-2" onClick={() => handleHistory(pokemonSearched)}>{pokemonSearched}</button>
               )
             })
           }
@@ -121,9 +137,9 @@ export function GettingPokemon() {
       <div className="flex flex-row w-8/12 mx-auto">
         {
           pokeTeam.map((pokemons, index) => {
-            return(
+            return (
               <div key={index} id={index} className={`w-40 h-52 border  flex flex-col mt-12 mx-2 border-gray-200 border-solid rounded hover:-translate-y-2  transform-all ease-in-out duration-300 ${backgroundTypes[pokemons.types[0].type.name]}`}>
-                <button id={index} className="ml-28 mt-2 border-red-300 border border-solid p-0 text-center p-0 bg-red-500 w-10" onClick={getPokemonOut}>X</button>
+                <button id={index} className="ml-28 mt-2 border-red-300 border border-solid text-center p-0 bg-red-500 w-10" onClick={getPokemonOut}>X</button>
                 <div className=' w-3/5 m-auto justify-center text-center mt-2'>
                   <div className='justify-center my-auto align-middle text-center flex flex-col h-30'>
                     <img className='h-24 w-full rounded-full bg-gray-100/50 mx-auto'
@@ -134,9 +150,10 @@ export function GettingPokemon() {
                   </div>
                 </div>
               </div>
-              )
+            )
           })}
       </div>
+    </div>
     </>
   )
 }
