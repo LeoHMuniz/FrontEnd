@@ -1,5 +1,9 @@
 import styles from './Tables.module.css'
-import iconFacebook from '../assets/iconFacebook.svg'
+import { FaYoutube } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { AiFillInstagram } from "react-icons/ai";
+import { IoLogoAmazon } from "react-icons/io5";
+import { BsFacebook } from "react-icons/bs";
 
 export function Tables() {
 
@@ -10,23 +14,23 @@ export function Tables() {
     const socialMedia = [{
         name: 'facebook',
         url: 'https://pt-br.facebook.com',
-        icon: iconFacebook
+        icon: <BsFacebook />
     }, {
         name: 'X',
         url: 'https://twitter.com/?lang=pt-br',
-        icon: iconFacebook
+        icon: <FaXTwitter />
     }, {
         name: 'youtube',
         url: 'https://www.youtube.com',
-        icon: iconFacebook
+        icon: <FaYoutube />
     }, {
         name: 'instagram',
         url: 'https://www.instagram.com',
-        icon: iconFacebook
+        icon: <AiFillInstagram />
     }, {
         name: 'amazon',
         url: 'https://www.amazon.com.br',
-        icon: iconFacebook
+        icon: <IoLogoAmazon />
     }]
 
     const itemsOnTable = [
@@ -59,12 +63,14 @@ export function Tables() {
 
             <blockquote>Garçom... Aqui, nesta mesa de bar; Você já cansou de escutar! Centenas, de casos de amor.</blockquote>
             <h4>Preformated</h4>
-            <pre>
-                var j = "Hello";
-                var k = "world";
-
-                print(j+k);
-                Hello world
+            <pre className={styles.tablesPre}>
+                <code>
+                    <p>oi():</p>
+                    <p>var j = "Hello";</p>
+                    <p>var k = "world";</p>
+                    <p>print(j+k);</p>
+                    <p>oi()</p>
+                </code>
             </pre>
             <div className={styles.listContainer}>
                 {
@@ -88,8 +94,8 @@ export function Tables() {
 
                         list.map(itens => {
                             return (
-                                <li>Linha{`${itens}, ${itens.icon}`}</li>
-                                
+                                <li>Linha{`${itens}`}</li>
+
                             )
                         })
 
@@ -100,7 +106,7 @@ export function Tables() {
                     {
                         socialMedia.map(icons => {
                             return (
-                                <li>{icons.name}</li>
+                                <li className={styles.socialIcons}>{icons.icon}</li>
                             )
                         })
                     }
@@ -111,10 +117,14 @@ export function Tables() {
             </div>
 
             <div className={styles.buttonContainer}>
-                <button className={styles.normalButton}>Oi</button>
-                <button className={`${styles.normalButton} ${styles.green}`}>Tchau</button>
-                <button className={styles.bigButton}>Oizão</button>
-                <button className={`${styles.bigButton} ${styles.red}`}>Tchauzão</button>
+                <div className={styles.firstContainer}>
+                    <button className={styles.normalButton}>Oi</button>
+                    <button className={`${styles.normalButton} ${styles.green}`}>Tchau</button>
+                </div>
+                <div className={styles.secondContainer}>
+                    <button className={styles.bigButton}>Oizão</button>
+                    <button className={`${styles.bigButton} ${styles.red}`}>Tchauzão</button>
+                </div>
             </div>
 
             <h4>Table</h4>

@@ -1,7 +1,76 @@
+.buttonContainer{
+    display:flex;
+    justify-content: space-between;
+    white-space: wrap;
+    width:75%;
+    margin:auto;
+}
+
+.firstContainer{
+    display:flex;
+    flex-direction: column;
+}
+
+.firstContainer button{
+    margin-top:.75rem;
+}
+
+.secondContainer{
+    display:flex;
+    flex-direction:column;
+}
+
+.secondContainer button{
+    margin-top:.75rem;
+}
+
 .normalButton{
-    background-color: red;
+    outline:none;
+    padding:.5rem 2rem;
+    border:1px solid black;
+    border-radius: .35rem;
+}
+
+.bigButton{
+    outline:none;
+    padding:1rem 3.5rem;
+    border:1px solid black;
+    border-radius: .35rem;
 }
 
 .green{
     background-color:green;
+}
+
+.red{
+    background-color:red;
+}
+
+blockquote{
+    border-left:3px solid var(--gray-600);
+    padding:1rem;
+}
+
+.tablesPre{
+    border:1px solid black;
+    border-radius: 2rem;
+    width: 20rem;
+    padding:1.2rem;
+    background-color: rgb(163, 162, 162);
+}
+
+.socialMediaList{
+    margin: 2rem 0;
+    list-style: none;
+    display:flex; 
+}
+
+.socialIcons{
+    font-size: 1.5rem;
+    color:#49bf9d;
+    margin-right:1.5rem;
+}
+
+pre p{
+    margin:0;
 }

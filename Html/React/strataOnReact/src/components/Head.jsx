@@ -52,17 +52,21 @@ export function Head() {
 
     return (
         <section className={styles.headSection}>
-            <h2>Quando o Header é aside e o aside é o header</h2>
+            <h2 className={styles.headTitle}>Quando o Header é aside e o aside é o header</h2>
 
             <p>Mussum Ipsum, cacilds vidis litro abertis. Cevadis im ampola pa arma uma pindureta.Mais vale um bebadis conhecidiss, que um al</p>
 
             <a href="#" className={styles.standardButton} title='Click me'>Click me!</a>
 
+            <h2>Trabalhos recentes</h2>
+            
             <div className={styles.cardContainer}>
                 {
                     imgs.map(img => {
                         return (
                             <div className={styles.card} key={img.id}>
+                                <h2 className={styles.cardTitle}>Título de cada card</h2>
+                                <p className={styles.cardsP}>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
                                 <a href={img.imgUrl}>
                                     <img
                                         src={img.imgShown}
@@ -74,7 +78,7 @@ export function Head() {
 
                 }
             </div>
-            
+
             <a href="#" className={styles.standardButton} title='Portifolio'>Portifólio completo!</a>
 
         </section>
