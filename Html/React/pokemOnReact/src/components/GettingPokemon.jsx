@@ -1,4 +1,5 @@
 import { useState, useRef } from "react"
+import _ from "lodash"
 
 
 export function GettingPokemon() {
@@ -37,8 +38,7 @@ export function GettingPokemon() {
 
   function handleClick(event) {
     event.preventDefault()
-    pokemonName === "" ? useModal('noRequest') : getPokemon(pokemonName)
-    console.log(pokemon)
+    pokemonName === "" ? setModalMode(2) : getPokemon(pokemonName)
   }
 
 
@@ -59,12 +59,24 @@ export function GettingPokemon() {
   }
 
   function addToTeam() {
-    !pokemonName ? useModal('noPokemon') : pokeTeam.length < 6 ? setPokeTeam((prevState) => [...prevState, pokemon]) : useModal('exceded')
+    if (pokeTeam.length >= 6) {
+      setModalMode(1)
+      return
+    }
+
+    if (!pokemonName) {
+      setModalMode(3)
+      return
+    }
+    console.log(pokemon)
+    if (_.isEmpty(pokemon)) {
+      setModalMode(2)
+      return
+    }
+
+    setPokeTeam((prevState) => [...prevState, pokemon])
   }
 
-  function useModal(result) {
-    result == "exceded" ? setModalMode(1) : result == "noRequest" ? setModalMode(2) : result == "noPokemon" ? setModalMode(3) : setModalMode(0)
-  }
 
   function getPokemonOut(event) {
     let toRemove = event.target.id
@@ -78,17 +90,17 @@ export function GettingPokemon() {
   return (
     <>
       {/** Esse é o modal! **/}
-      <div className={modalMode != 0 ? `my-[21%] mx-[43%] flex w-80 h-60 bg-white absolute z-10 text-center justify-center flex-col rounded border border-solid border-gray-700` : `hidden`}>
+      {modalMode !== 0 && <div className={`my-[21%] mx-[43%] flex w-80 h-60 bg-white absolute z-10 text-center justify-center flex-col rounded border border-solid border-gray-700`}>
         <h2 className="mb-12">Olá!</h2>
         <p className="mb-4 p-2 bg-gray-300">{modalMode == 1 ? `Seu time pode conter somente até 6 pokemons!` : modalMode == 2 ? `Você precisa nos dar um nome de pokemon!` : `Não há pokemon para ser adicionado ao time!`}</p>
         <button className="p-2 w-fit mx-auto rounded bg-gray-200 outline-gray-100 hover:bg-gray-400 transition-colors duration-300" onClick={() => handleClose()}>Entendi!</button>
-      </div>
+      </div>}
 
       <div className={`${background} backdrop-opacity-25 bg-black relative h-screen bg-cover w-full ${modalMode ? `blur-sm` : ""}`}>
         <div className={`absolute h-screen w-full bg-black/50`}>
           <main className={`flex flex-row justify-center align-middle gap-8`}>
             <div className="">
-              <div className={`z-50 w-80 h-[30rem] mt-52 border justify-center border-gray-200 border-solid rounded ${backgroundTypes[pokeType] ? backgroundTypes[pokeType] : `bg-red-700`}`}>
+              <div className={` w-80 h-[30rem] mt-52 border justify-center border-gray-200 border-solid rounded ${backgroundTypes[pokeType] ? backgroundTypes[pokeType] : `bg-red-700`}`}>
                 <header className='mx-auto my-8 w-full text-center'>
                   <p>Welcome to my pokemOnReact!</p>
                 </header>
@@ -142,12 +154,12 @@ export function GettingPokemon() {
             {
               pokeTeam.map((pokemons, index) => {
                 return (
-                  <div key={index} id={index} className={`w-40 h-52 border  flex flex-col mt-12 mx-2 border-gray-200 border-solid rounded hover:-translate-y-2  transform-all ease-in-out duration-300 ${backgroundTypes[pokemons.types[0].type.name]}`}>
+                  <div key={index} id={index} className={`w-40 h-52 border  flex flex-col mt-12 mx-2 border-gray-200 border-solid rounded hover:-translate-y-2  transform-all ease-in-out duration-300 ${backgroundTypes[pokemons?.types[0]?.type?.name]}`}>
                     <button id={index} className="ml-28 mt-2 border-red-300 border border-solid text-center p-0 bg-red-500 w-10" onClick={getPokemonOut}>X</button>
                     <div className=' w-3/5 m-auto justify-center text-center mt-2'>
                       <div className='justify-center my-auto align-middle text-center flex flex-col h-30'>
                         <img className='h-24 w-full rounded-full bg-gray-100/50 mx-auto'
-                          src={coin ? pokemons.sprites.front_default : ""}
+                          src={coin ? pokemons?.sprites?.front_default : ""}
                           alt=""
                         />
                         <h4 className="mt-2 capitalize">{pokemons.name}</h4>
@@ -157,8 +169,8 @@ export function GettingPokemon() {
                 )
               })}
           </div>
-          </div>
         </div>
-      </>
-      )
+      </div>
+    </>
+  )
 }
