@@ -37,10 +37,16 @@ export function GettingPokemon() {
   }
 
   function handleClick(event) {
-    event.preventDefault()
     pokemonName === "" ? setModalMode(2) : getPokemon(pokemonName)
   }
+  // event.preventDefault()
 
+  function handleKeyPressed(event) {
+    if (event.key == 'Enter') {
+      pokemonName === "" ? setModalMode(2) : getPokemon(pokemonName)
+    }
+    event.preventDefault()
+  }
 
   function handleHistory(newName) {
     nomeDoPokemon.current.value = newName
@@ -68,7 +74,7 @@ export function GettingPokemon() {
       setModalMode(3)
       return
     }
-    console.log(pokemon)
+
     if (_.isEmpty(pokemon)) {
       setModalMode(2)
       return
@@ -112,7 +118,7 @@ export function GettingPokemon() {
                     />
                   </div>
 
-                  <input type="text" placeholder='Name of the pokemon' className='text-center p-2 rounded bg-gray-200 outline-gray-200' onChange={getPokemonName} id="nomePokemon" ref={nomeDoPokemon} />
+                  <input type="text" placeholder='Name of the pokemon' className='text-center p-2 rounded bg-gray-200 outline-gray-200' onChange={getPokemonName} onKeyUp={handleKeyPressed} id="nomePokemon" ref={nomeDoPokemon} />
                   <div className="flex row gap-1 ">
                     <button type="submit" className='p-1 rounded bg-gray-800 text-white hover:bg-gray-400 hover:text-black w-3/5 m-auto my-4 transition-colors ease-in-out duration-300' htmlFor="nomePokemon" onClick={handleClick}>Search</button>
                     <button type="submit" className='p-1 rounded bg-orange-600 hover:bg-orange-400 w-3/5 m-auto my-4 transition-colors ease-in-out duration-300' onClick={addToTeam}>Get!</button>
