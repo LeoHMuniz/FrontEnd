@@ -73,46 +73,48 @@ export function Tables() {
                 </code>
             </pre>
             <div className={styles.listContainer}>
-                {
-                    secondList.map(numbers => {
-                        return (<ul key={numbers} className={styles.unorganizedList}>
-                            {
-
-                                list.map(itens => {
-                                    return (
-                                        <li>Linha{itens}</li>
-
-                                    )
-                                })
-
-                            }
-                        </ul>)
-                    })}
-
-                <ol className={styles.organizedList}>
+                <div className={styles.listFirst}>
                     {
+                        secondList.map(numbers => {
+                            return (<ul key={numbers} className={styles.unorganizedList}>
+                                {
 
-                        list.map(itens => {
-                            return (
-                                <li>Linha{`${itens}`}</li>
+                                    list.map(itens => {
+                                        return (
+                                            <li key={itens}>Linha{itens}</li>
 
-                            )
-                        })
+                                        )
+                                    })
 
-                    }
-                </ol>
+                                }
+                            </ul>)
+                        })}
+                </div>
+                <div className={styles.listSecond}>
+                    <ol className={styles.organizedList}>
+                        {
 
-                <ul className={styles.socialMediaList}>
-                    {
-                        socialMedia.map(icons => {
-                            return (
-                                <li className={styles.socialIcons}>{icons.icon}</li>
-                            )
-                        })
-                    }
+                            list.map(itens => {
+                                return (
+                                    <li key={itens}>Linha{`${itens}`}</li>
 
-                </ul>
+                                )
+                            })
 
+                        }
+                    </ol>
+
+                    <ul className={styles.socialMediaList}>
+                        {
+                            socialMedia.map(icons => {
+                                return (
+                                    <li className={styles.socialIcons}><a href="">{icons.icon}</a></li>
+                                )
+                            })
+                        }
+
+                    </ul>
+                </div>
 
             </div>
 
@@ -127,30 +129,6 @@ export function Tables() {
                 </div>
             </div>
 
-            <h4>Table</h4>
-            <table className={styles.actualTable}>
-                <caption>Default</caption>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        itemsOnTable.map(items => {
-                            return (
-                                <tr key={items.id}>
-                                    <td>{items.item}</td>
-                                    <td>{items.description}</td>
-                                    <td>{items.price}</td>
-                                </tr>
-                            )
-                        })
-                    }
-                </tbody>
-            </table>
         </section>
     )
 }

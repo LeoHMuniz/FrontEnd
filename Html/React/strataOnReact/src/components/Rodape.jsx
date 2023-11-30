@@ -12,10 +12,14 @@ import thirdThumb from '../assets/thumbs/03.jpg'
 import fourthThumb from '../assets/thumbs/04.jpg'
 import fifthThumb from '../assets/thumbs/05.jpg'
 import sixthThumb from '../assets/thumbs/06.jpg'
+import { useState } from 'react'
+
 
 
 export function Rodape() {
-
+    
+    const [imagem, setImagem] = useState(0)
+    
     const imgs = [{
         id: 1,
         imgUrl: first,
@@ -48,43 +52,57 @@ export function Rodape() {
         imgShown: sixthThumb
     }]
 
+    function handleClick(id) {
+        setImagem(imgs[id - 1])
+    }
+
     return (
         <>
-        <div className={styles.imgContainer}>
-            <a href={first}><img
+            {imagem != 0 ? <a href={imagem.imgUrl}><img
+                src={imagem.imgShown}
+                alt="The head image"
+                className={styles.headImage}
+            />
+            </a> 
+            : <a href={first}><img
                 src={firstThumb}
                 alt="The head image"
-            />
-            </a>
+                className={styles.headImage}
+            /> 
+            </a>}
+            <div className={styles.imgContainer}>
 
-            {
-                imgs.map(img => {
-                    return (
-                        <a href={img.imgUrl} key={img.id}>
+                {
+                    imgs.map(img => {
+                        return (
+                            // <a href={img.imgUrl} key={img.id}>
                             <img
+                                key={img}
+                                onClick={() => handleClick(img.id)}
+                                className={styles.imgContainer_images}
                                 src={img.imgShown}
                                 alt={img.description}
                             />
-                        </a>
-                    )
-                })
-            }
+                            // </a>
+                        )
+                    })
+                }
 
-        </div>
-        <footer>
-           <p className={styles.right}>
-            <img 
-            src="" 
-            alt="" 
-            /> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia neque ex inventore quae animi porro delectus nesciunt voluptatum recusandae, praesentium dicta! Corrupti ut id dolor molestias error quod? Ad, laboriosam.
-           </p>
-           <p className={styles.left}>
-            <img 
-            src="" 
-            alt="" 
-            /> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia voluptate culpa laborum! Inventore ad ullam, magni minus hic obcaecati blanditiis quibusdam et voluptatum molestias reprehenderit quia accusantium non repellendus necessitatibus.
-           </p>
-        </footer>
+            </div>
+            <footer>
+                <p className={styles.right}>
+                    <img
+                        src=""
+                        alt=""
+                    /> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia neque ex inventore quae animi porro delectus nesciunt voluptatum recusandae, praesentium dicta! Corrupti ut id dolor molestias error quod? Ad, laboriosam.
+                </p>
+                <p className={styles.left}>
+                    <img
+                        src=""
+                        alt=""
+                    /> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia voluptate culpa laborum! Inventore ad ullam, magni minus hic obcaecati blanditiis quibusdam et voluptatum molestias reprehenderit quia accusantium non repellendus necessitatibus.
+                </p>
+            </footer>
         </>
-        )
+    )
 }

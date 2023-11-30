@@ -65,13 +65,13 @@ export function Head() {
                     imgs.map(img => {
                         return (
                             <div className={styles.card} key={img.id}>
-                                <h2 className={styles.cardTitle}>Título de cada card</h2>
-                                <p className={styles.cardsP}>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
                                 <a href={img.imgUrl}>
                                     <img
                                         src={img.imgShown}
                                         alt={img.description}
                                     /></a>
+                                <h2 className={styles.cardTitle}>Título de cada card</h2>
+                                <p className={styles.cardsP}>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
                             </div>
                         )
                     })

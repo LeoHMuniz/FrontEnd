@@ -1,0 +1,21 @@
+.imgContainer{
+    margin: 4rem 5% 0 0;
+    justify-content: center;
+    display:flex;
+    gap: 1rem;
+    flex-wrap:wrap;
+    /* grid-template-columns: repeat(3, 1fr); */
+}
+
+.headImage{
+    justify-content: center;
+    border-radius:1rem;
+    width:50vw;
+    margin: auto;
+    margin-top: 4rem;
+    display:block;
+}
+
+.imgContainer_images{
+    border-radius:1rem;
+}
