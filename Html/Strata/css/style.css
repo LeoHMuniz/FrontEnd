@@ -250,11 +250,10 @@ caption{
 }
 .tab td:nth-child(2){
     padding-right:80px;
-}
-.tab td:nth-child(2){
     border-left:1px solid black;
     border-right:1px solid black;
 }
+
 .tab th{
     text-align:left;
     border-bottom:2px solid black;
