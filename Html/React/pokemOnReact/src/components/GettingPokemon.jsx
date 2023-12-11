@@ -37,7 +37,7 @@ export function GettingPokemon() {
   }
 
   function handleClick(event) {
-    pokemonName === "" ? setModalMode(2) : getPokemon(pokemonName)
+    pokemonName === "" ? setModalMode(2) : pokeHistoryUpdated.indexOf(pokemonName) >= 0 ? rememberPokemon(pokemonName) : getPokemon(pokemonName)
   }
   // event.preventDefault()
 
@@ -51,6 +51,14 @@ export function GettingPokemon() {
   function handleHistory(newName) {
     nomeDoPokemon.current.value = newName
     getPokemon(newName)
+  }
+
+  function rememberPokemon(pokemonName) {
+    const indexOfPokemon = pokeHistoryUpdated.indexOf(pokemonName)
+    setPokemon(pokeHistoryUpdated[indexOfPokemon])
+
+    setCoin(true)
+    setPokeType(pokemon.types[0].type.name)
   }
 
   async function getPokemon(pokemonName) {
