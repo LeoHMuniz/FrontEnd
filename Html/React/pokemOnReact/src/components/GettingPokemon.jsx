@@ -104,10 +104,12 @@ export function GettingPokemon() {
   return (
     <>
       {/** Esse é o modal! **/}
-      {modalMode !== 0 && <div className={`my-[21%] mx-[43%] flex w-80 h-60 bg-white absolute z-10 text-center justify-center flex-col rounded border border-solid border-gray-700`}>
-        <h2 className="mb-12">Olá!</h2>
-        <p className="mb-4 p-2 bg-gray-300">{modalMode == 1 ? `Seu time pode conter somente até 6 pokemons!` : modalMode == 2 ? `Você precisa nos dar um nome de pokemon!` : `Não há pokemon para ser adicionado ao time!`}</p>
-        <button className="p-2 w-fit mx-auto rounded bg-gray-200 outline-gray-100 hover:bg-gray-400 transition-colors duration-300" onClick={() => handleClose()}>Entendi!</button>
+      {modalMode !== 0 && <div className={`my-[21%] mx-[43%] flex w-80 h-60 bg-gray-700 absolute z-10 text-center flex-col rounded border border-solid border-gray-700 text-gray-200`}>
+        <h2 className="py-2 justify-center uppercase bg-gray-500 rounded w-full">Atenção!</h2>
+        <hr />
+        <p className="m-4 p-2">{modalMode == 1 ? `Seu time pode conter somente até 6 pokemons!` : modalMode == 2 ? `Você precisa nos dar um nome de pokemon!` : `Não há pokemon para ser adicionado ao time!`}</p>
+        <hr />
+        <button className="p-2 w-28 m-auto rounded bg-gray-500 outline-gray-700 hover:bg-gray-400 hover:text-black transition-colors duration-300" onClick={() => handleClose()}>Entendi!</button>
       </div>}
 
       <div className={`${background} backdrop-opacity-25 bg-black relative h-screen bg-cover w-full ${modalMode ? `blur-sm` : ""}`}>
