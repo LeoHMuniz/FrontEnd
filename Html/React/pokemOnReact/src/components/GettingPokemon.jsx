@@ -1,20 +1,38 @@
+/*Okay, what is the main purpose here;
+This project is made using Tailwind and React, and the purpose is to search pokemons on the pokeAPI and make a team (of six) out of the pokemons you liked!
+You can delete pokemons from your team and use the history to get the pokemons you once declined! (without using the API once again, as the pokes you search are located on a storage list)*/
 import { useState, useRef } from "react"
 import _ from "lodash"
 
 
 export function GettingPokemon() {
 
-  const [historico, setHistorico] = useState([])
+  /*These states are the histories, AKA storages for the pokemons that we are selecting for our team*/
+  const [objectHistory, setObjectHistory] = useState([])
+  const [objectHistoryUpdated, setObjectHistoryUpdated] = useState([])
+  const [pokeHistory, setPokeHistory] = useState([])
+  const [pokeHistoryUpdated, setPokeHistoryUpdated] = useState([])
+
+  /*This tells the code to start running (maybe it's not good to use it like this)*/
   const [coin, setCoin] = useState(false)
+
+  /*These states are what make the whole thing become visual.
+   They are the object of the pokemon, containing all of its properties;
+   The name of the pokemon, to be used on the API call;
+   The type of the pokemon, to make the card a little better
+   And the actual Team, that shows you the pokes you liked the most!
+   The pokeTeamUpdated is here to cut the pokemons you don't like in half! Just kidding, it's a variable that is here for splice to work.*/
   const [pokemon, setPokemon] = useState({})
   const [pokemonName, setPokemonName] = useState('')
-  const [pokeHistory, setPokeHistory] = useState([])
   const [pokeType, setPokeType] = useState('')
-  const [pokeHistoryUpdated, setPokeHistoryUpdated] = useState([])
   const [pokeTeam, setPokeTeam] = useState([])
-  const [modalMode, setModalMode] = useState(0)
   const [pokeTeamUpdated, setPokeTeamUpdated] = useState([])
   const nomeDoPokemon = useRef(null)
+
+  /*This is the error management that I developed.*/
+  const [modalMode, setModalMode] = useState(0)
+
+  /*The backgrounds! got'em all from vecteezy.com*/
   const backgroundTypes = {
     bug: `bg-[url('./assets/pokeBackground/pokemonBug.jpg')]`,
     dark: `bg-[url('./assets/pokeBackground/pokemonDark.jpg')]`,
@@ -39,7 +57,6 @@ export function GettingPokemon() {
   function handleClick(event) {
     pokemonName === "" ? setModalMode(2) : getPokemon(pokemonName)
   }
-  // event.preventDefault()
 
   function handleKeyPressed(event) {
     if (event.key == 'Enter') {
@@ -50,27 +67,34 @@ export function GettingPokemon() {
 
   function handleHistory(newName) {
     nomeDoPokemon.current.value = newName
-    getPokemon(newName)
+    rememberPokemon(newName)
   }
 
-  function rememberPokemon(pokemonName) {
-    const indexOfPokemon = pokeHistoryUpdated.indexOf(pokemonName)
-    setPokemon(pokeHistoryUpdated[indexOfPokemon])
+  function rememberPokemon(pokemonName) { /*Function made for getting a pokemon without calling API IT WORKS, IT ACTUALLY WORKS!*/
+    objectHistory.map(memory => {
+      if (memory.name === pokemonName) {
+        const remember = objectHistory.indexOf(memory)
+        setPokemon(objectHistory[remember])
+        setPokeType(memory.types[0].type.name)
+      }
+    })
 
-    setCoin(true)
-    setPokeType(pokemon.types[0].type.name)
   }
 
   async function getPokemon(pokemonName) {
-    const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+    const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
     const json = await resposta.json()
     setPokemon(json)
     setCoin(true)
     setPokeType(json.types[0].type.name)
 
+
     setPokeHistory((prevState) => [...prevState, pokemonName])
     setPokeHistoryUpdated(pokeHistory.filter((value, index) => pokeHistory.indexOf(value) == index))
-    
+
+
+    setObjectHistory((prevState) => [...prevState, pokemon])
+    setObjectHistoryUpdated(objectHistory.filter((value, index) => objectHistory.indexOf(value) == index))
   }
 
   function addToTeam() {
@@ -119,7 +143,7 @@ export function GettingPokemon() {
             <div className="">
               <div className={` w-80 h-[30rem] mt-52 border justify-center border-gray-200 border-solid rounded ${backgroundTypes[pokeType] ? backgroundTypes[pokeType] : `bg-gray-700/60`}`}>
                 <header className='mx-auto my-8 w-full text-center'>
-                  <p className='uppercase'>Welcome to my pokemOnReact!</p>
+                  <p className='font-black text-gray-900'>Welcome to my pokemOnReact!</p>
                 </header>
                 <main className='flex-col flex w-3/5 m-auto justify-center align-bottom text-center'>
                   <div className='justify-center my-auto align-middle text-center flex h-30'>
@@ -160,8 +184,8 @@ export function GettingPokemon() {
             <div className="flex flex-col  mt-52 w-40 h-[30rem]">
               {
                 pokeHistoryUpdated.map((pokemonSearched, index) => {
-                  return (
-                    <button key={index} className="w-40 bg-slate-300 rounded p-1 text-center mb-2 capitalize" onClick={() => handleHistory(pokemonSearched)}>{pokemonSearched}</button>
+
+                  return (<button key={index} className="w-40 bg-slate-300 rounded p-1 text-center mb-2 capitalize" onClick={() => handleHistory(pokemonSearched)}>{pokemonSearched}</button>
                   )
                 })
               }
