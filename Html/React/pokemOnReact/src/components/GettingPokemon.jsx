@@ -4,7 +4,7 @@ import _ from "lodash"
 
 export function GettingPokemon() {
 
-
+  const [historico, setHistorico] = useState([])
   const [coin, setCoin] = useState(false)
   const [pokemon, setPokemon] = useState({})
   const [pokemonName, setPokemonName] = useState('')
@@ -37,13 +37,13 @@ export function GettingPokemon() {
   }
 
   function handleClick(event) {
-    pokemonName === "" ? setModalMode(2) : pokeHistoryUpdated.indexOf(pokemonName) >= 0 ? rememberPokemon(pokemonName) : getPokemon(pokemonName)
+    pokemonName === "" ? setModalMode(2) : getPokemon(pokemonName)
   }
   // event.preventDefault()
 
   function handleKeyPressed(event) {
     if (event.key == 'Enter') {
-      pokemonName === "" ? setModalMode(2) : getPokemon(pokemonName)
+      handleClick(event)
     }
     event.preventDefault()
   }
@@ -70,6 +70,7 @@ export function GettingPokemon() {
 
     setPokeHistory((prevState) => [...prevState, pokemonName])
     setPokeHistoryUpdated(pokeHistory.filter((value, index) => pokeHistory.indexOf(value) == index))
+    
   }
 
   function addToTeam() {
@@ -116,9 +117,9 @@ export function GettingPokemon() {
         <div className={`absolute h-screen w-full bg-black/50`}>
           <main className={`flex flex-row justify-center align-middle gap-8`}>
             <div className="">
-              <div className={` w-80 h-[30rem] mt-52 border justify-center border-gray-200 border-solid rounded ${backgroundTypes[pokeType] ? backgroundTypes[pokeType] : `bg-red-700`}`}>
+              <div className={` w-80 h-[30rem] mt-52 border justify-center border-gray-200 border-solid rounded ${backgroundTypes[pokeType] ? backgroundTypes[pokeType] : `bg-gray-700/60`}`}>
                 <header className='mx-auto my-8 w-full text-center'>
-                  <p>Welcome to my pokemOnReact!</p>
+                  <p className='uppercase'>Welcome to my pokemOnReact!</p>
                 </header>
                 <main className='flex-col flex w-3/5 m-auto justify-center align-bottom text-center'>
                   <div className='justify-center my-auto align-middle text-center flex h-30'>
