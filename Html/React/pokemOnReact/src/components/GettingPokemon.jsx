@@ -76,6 +76,7 @@ export function GettingPokemon() {
         const remember = objectHistory.indexOf(memory)
         setPokemon(objectHistory[remember])
         setPokeType(memory.types[0].type.name)
+        newHistory(memory)
       }
     })
 
@@ -85,15 +86,19 @@ export function GettingPokemon() {
     const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
     const json = await resposta.json()
     setPokemon(json)
+    newHistory(json)
     setCoin(true)
     setPokeType(json.types[0].type.name)
 
 
-    setPokeHistory((prevState) => [...prevState, pokemonName])
+  }
+
+  function newHistory(e) {
+    setPokeHistory((prevState) => [...prevState, e.name])
     setPokeHistoryUpdated(pokeHistory.filter((value, index) => pokeHistory.indexOf(value) == index))
 
 
-    setObjectHistory((prevState) => [...prevState, pokemon])
+    setObjectHistory((prevState) => [...prevState, e])
     setObjectHistoryUpdated(objectHistory.filter((value, index) => objectHistory.indexOf(value) == index))
   }
 
@@ -185,7 +190,8 @@ export function GettingPokemon() {
               {
                 pokeHistoryUpdated.map((pokemonSearched, index) => {
 
-                  return (<button key={index} className="w-40 bg-slate-300 rounded p-1 text-center mb-2 capitalize" onClick={() => handleHistory(pokemonSearched)}>{pokemonSearched}</button>
+                  return (
+                    <button key={index} className="w-40 bg-slate-300 rounded p-1 text-center mb-2 capitalize" onClick={() => handleHistory(pokemonSearched)}>{pokemonSearched}</button>
                   )
                 })
               }
