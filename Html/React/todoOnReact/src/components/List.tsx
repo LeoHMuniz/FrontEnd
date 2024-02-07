@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { FaRegTrashAlt } from "react-icons/fa"
 import Modal from "./Modal"
-import NoItems from "./NoItems"
+import NotFound from "./NotFound"
 
 interface ITaskList {
     tasks: ITask[]
@@ -29,7 +29,6 @@ export default function List({ tasks }: ITaskList) {
         }, 0);
     }
 
-
     function handleDelete(index: number) {
         const updatedTasks = tasks.splice(index, 1)
         setDeletedTask(updatedTasks)
@@ -38,20 +37,14 @@ export default function List({ tasks }: ITaskList) {
 
     useEffect(() => {
         setTaskSize(tasks.length)
-
-
     }, [deletedTask, tasks])
 
     function showModal(index: number) {
         setTaskToBeDeleted(index)
         setModal(true)
-
     }
 
-
     return (
-
-
         <main className="w-full mt-24 text-gray-300">
             {modal && (
                 <Modal
@@ -74,7 +67,7 @@ export default function List({ tasks }: ITaskList) {
             </div>
             {
                 tasks.length <= 0 ?
-                    <NoItems />
+                    <NotFound />
                     : ""
             }
             <ul>
@@ -92,7 +85,6 @@ export default function List({ tasks }: ITaskList) {
                                         id={`task${task.id}`}
                                         readOnly
                                         checked={task.isCompleted}
-
                                     />
                                     <label
                                         htmlFor={`task${task.id}`}
@@ -106,7 +98,11 @@ export default function List({ tasks }: ITaskList) {
 
                                 <button
                                     onClick={() => showModal(tasks.indexOf(task))}
-                                    className="hover:text-red-500 transition-all ease-in-out"><FaRegTrashAlt /></button>
+                                    className="hover:text-red-500 transition-all ease-in-out"
+                                >
+                                    <FaRegTrashAlt />
+                                </button>
+
                             </li>
                         )
                     })

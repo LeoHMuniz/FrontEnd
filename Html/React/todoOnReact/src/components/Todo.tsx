@@ -26,7 +26,6 @@ export default function Todo() {
         <input
           className=" text-gray-400 p-4 w-full rounded-lg flex-1 bg-[var(--gray-500)] border border-black border-solid"
           type="text"
-          id="tarefaNova"
           onChange={(e) => setTaskText(e.target.value)}
           value={taskText}
           placeholder="Adicione uma nova tarefa"
