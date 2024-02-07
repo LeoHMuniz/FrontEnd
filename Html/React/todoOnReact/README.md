@@ -1,30 +1,34 @@
-# React + TypeScript + Vite
+# To-do-List 
+![image](https://github.com/LeoHMuniz/FrontEnd/assets/132720449/b7f288da-606f-4eb6-9183-053500a59596)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto React de uma to-do-list, estilizado com Tailwind
 
-Currently, two official plugins are available:
+## Como Rodar o Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+Clone o repositório:
+```bash
+git clone https://github.com/LeoHMuniz/FrontEnd/tree/main/Html/React/todoOnReact
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Navegue até o diretório do projeto:
+```bash
+cd todoOnReact
+```
+
+Instale as dependências:
+```bash
+npm install
+```
+
+Execute o projeto:
+```bash
+npm run dev
+```
+A aplicação será iniciada e estará acessível em http://localhost:3000.
+
+## Tecnologias Utilizadas
+
+React: Uma biblioteca JavaScript para criar interfaces de usuário.
+Tailwind: Uma linguagem de folha de estilo para estilizar a aparência dos componentes.
+
+Divirta-se! 😉
