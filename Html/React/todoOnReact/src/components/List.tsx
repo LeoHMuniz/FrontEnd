@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { FaRegTrashAlt } from "react-icons/fa"
 import Modal from "./Modal"
-import NoItems from "./noItems"
+import NoItems from "./NoItems"
 
 interface ITaskList {
     tasks: ITask[]
@@ -23,9 +23,9 @@ export default function List({ tasks }: ITaskList) {
 
     function handleCounting() {
         return tasks.reduce((acc: number, cur: ITask) => {
-            const tarefaCompleta = cur.isCompleted ? acc + 1 : acc;
+            const completedTask = cur.isCompleted ? acc + 1 : acc;
 
-            return tarefaCompleta;
+            return completedTask;
         }, 0);
     }
 
