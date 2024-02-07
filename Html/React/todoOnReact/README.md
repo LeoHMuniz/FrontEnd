@@ -29,6 +29,7 @@ A aplicação será iniciada e estará acessível em http://localhost:3000.
 ## Tecnologias Utilizadas
 
 React: Uma biblioteca JavaScript para criar interfaces de usuário.
+
 Tailwind: Uma linguagem de folha de estilo para estilizar a aparência dos componentes.
 
 Divirta-se! 😉
