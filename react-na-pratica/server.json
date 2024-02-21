@@ -1,0 +1,20 @@
+{
+    "tags": [
+        {"title": "React","amountOfVideos": 142},
+        {"title": "Js","amountOfVideos": 220},
+        {"title": "Ts","amountOfVideos": 420},
+        {"title": "Angular","amountOfVideos": 320},
+        {"title": "Vue","amountOfVideos": 120},
+        {"title": "Python","amountOfVideos": 10},
+        {"title": "Java","amountOfVideos": 950},
+        {"title": "C++","amountOfVideos": 74},
+        {"title": "React","amountOfVideos": 142},
+        {"title": "Js","amountOfVideos": 2},
+        {"title": "Ts","amountOfVideos": 15},
+        {"title": "Angular","amountOfVideos": 90},
+        {"title": "Vue","amountOfVideos": 63},
+        {"title": "Python","amountOfVideos": 22},
+        {"title": "Java","amountOfVideos": 33},
+        {"title": "C++","amountOfVideos": 87}
+    ]
+}
