@@ -1,20 +1,239 @@
 {
-    "tags": [
-        {"title": "React","amountOfVideos": 142},
-        {"title": "Js","amountOfVideos": 220},
-        {"title": "Ts","amountOfVideos": 420},
-        {"title": "Angular","amountOfVideos": 320},
-        {"title": "Vue","amountOfVideos": 120},
-        {"title": "Python","amountOfVideos": 10},
-        {"title": "Java","amountOfVideos": 950},
-        {"title": "C++","amountOfVideos": 74},
-        {"title": "React","amountOfVideos": 142},
-        {"title": "Js","amountOfVideos": 2},
-        {"title": "Ts","amountOfVideos": 15},
-        {"title": "Angular","amountOfVideos": 90},
-        {"title": "Vue","amountOfVideos": 63},
-        {"title": "Python","amountOfVideos": 22},
-        {"title": "Java","amountOfVideos": 33},
-        {"title": "C++","amountOfVideos": 87}
-    ]
+  "tags": [
+    {
+      "title": "React",
+      "amountOfVideos": 142,
+      "slug": "old"
+    },
+    {
+      "title": "Js",
+      "amountOfVideos": 220,
+      "slug": "old"
+    },
+    {
+      "title": "Ts",
+      "amountOfVideos": 420,
+      "slug": "old"
+    },
+    {
+      "title": "Angular",
+      "amountOfVideos": 320,
+      "slug": "old"
+    },
+    {
+      "title": "Vue",
+      "amountOfVideos": 120,
+      "slug": "old"
+    },
+    {
+      "title": "Python",
+      "amountOfVideos": 10,
+      "slug": "old"
+    },
+    {
+      "title": "Java",
+      "amountOfVideos": 950,
+      "slug": "old"
+    },
+    {
+      "title": "C++",
+      "amountOfVideos": 74,
+      "slug": "old"
+    },
+    {
+      "title": "React",
+      "amountOfVideos": 142,
+      "slug": "old"
+    },
+    {
+      "title": "Js",
+      "amountOfVideos": 2,
+      "slug": "old"
+    },
+    {
+      "title": "Ts",
+      "amountOfVideos": 15,
+      "slug": "old"
+    },
+    {
+      "title": "Angular",
+      "amountOfVideos": 90,
+      "slug": "old"
+    },
+    {
+      "title": "Vue",
+      "amountOfVideos": 63,
+      "slug": "old"
+    },
+    {
+      "title": "Python",
+      "amountOfVideos": 22,
+      "slug": "old"
+    },
+    {
+      "title": "Java",
+      "amountOfVideos": 33,
+      "slug": "old"
+    },
+    {
+      "title": "C++",
+      "amountOfVideos": 87,
+      "slug": "old"
+    },
+    {
+      "id": "c923",
+      "name": "Rust",
+      "slug": ""
+    },
+    {
+      "id": "a23e",
+      "name": "Rust",
+      "slug": ""
+    },
+    {
+      "id": "87f8",
+      "name": "Rustaas",
+      "slug": ""
+    },
+    {
+      "id": "df81",
+      "name": "Rust",
+      "slug": ""
+    },
+    {
+      "id": "ce07",
+      "name": "Rust",
+      "slug": ""
+    },
+    {
+      "id": "0267",
+      "name": "Rust",
+      "slug": ""
+    },
+    {
+      "id": "f6d2",
+      "name": "Rust",
+      "slug": ""
+    },
+    {
+      "id": "2357",
+      "name": "Rust",
+      "slug": ""
+    },
+    {
+      "id": "d5d9",
+      "name": "Rust",
+      "slug": ""
+    },
+    {
+      "id": "fff6",
+      "name": "Rust",
+      "slug": ""
+    },
+    {
+      "id": "1400",
+      "name": "Rusts",
+      "slug": ""
+    },
+    {
+      "id": "4bb6",
+      "name": "sSSSSSSSSSS",
+      "slug": ""
+    },
+    {
+      "id": "5750",
+      "name": "sSSSSSSSSSS",
+      "slug": ""
+    },
+    {
+      "id": "7e0a",
+      "title": "React Native",
+      "slug": "react-native",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "5934",
+      "title": "SprintBoot",
+      "slug": "sprintboot",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "f17e",
+      "title": "SprintBoot",
+      "slug": "sprintboot",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "1504",
+      "title": "SprintBoot",
+      "slug": "sprintboot",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "d3b0",
+      "title": "Django",
+      "slug": "django",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "6299",
+      "title": "Django",
+      "slug": "django",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "e7c0",
+      "title": "angular 12",
+      "slug": "angular-12",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "8f05",
+      "title": "laravel",
+      "slug": "laravel",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "6247",
+      "title": "laravel",
+      "slug": "laravel",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "5e05",
+      "title": "lareacet",
+      "slug": "lareacet",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "465b",
+      "title": "asaaaaaaa",
+      "slug": "asaaaaaaa",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "6fc4",
+      "title": "Laravel",
+      "slug": "laravel",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "a9af",
+      "title": "Django",
+      "slug": "django",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "a23b",
+      "title": "React",
+      "slug": "react",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "3276",
+      "title": "SpringBoot",
+      "slug": "springboot",
+      "amountOfVideos": 0
+    }
+  ]
 }
