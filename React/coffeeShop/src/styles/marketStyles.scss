@@ -1,0 +1,124 @@
+@import "../globalStyle.scss";
+.marketSection {
+    .titleL {
+        color: $base-subtitle;
+        margin: 54px 0;
+    }
+
+    .cardContainer {
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 32px;
+
+        .titleS {
+            color: $base-subtitle;
+        }
+
+        .textS {
+            color: $base-label;
+        }
+
+        .coffeeCard {
+            width: 256px;
+            height: 310px;
+            align-items: center;
+            text-align: center;
+            background-color: $base-card;
+            border-radius: 6px 36px;
+
+            img {
+                margin-top: -20px;
+            }
+
+            .categoryContainer {
+                display: flex;
+                gap: 4px;
+                justify-content: center;
+
+                span {
+                    text-transform: uppercase;
+                    color: $yellow-dark;
+                    padding: 4px 8px;
+                    background-color: $yellow-light;
+                    border-radius: 12px;
+                }
+            }
+        }
+        .purchaseContainer {
+            display: flex;
+            margin: auto;
+            align-items: center;
+            justify-content: space-between;
+            width: 208px;
+            height: 36px;
+
+            .textS {
+                color: $base-text;
+            }
+
+            .titleM {
+                color: $base-text;
+            }
+
+            .buttonInput {
+                padding: 0;
+                outline: none;
+                border: none;
+                border-radius: 6px;
+                width: 56px;
+                height: 22px;
+                background-color: $base-button;
+                color: $base-title;
+
+                span {
+                    color: $purple-dark;
+                    align-items: center;
+                    cursor: pointer;
+                }
+
+                input::-webkit-inner-spin-button,
+                input::-webkit-outer-spin-button {
+                    margin: 0;
+                    display: none;
+                }
+
+                input {
+                    user-select: none;
+                    outline: none;
+                    text-align: center;
+                    border: none;
+                    height: 20px;
+                    width: 20px;
+                    color: $base-title;
+                    background-color: $base-button;
+                }
+            }
+            .button {
+                padding: 0;
+                border: none;
+
+                .icon {
+                    border-radius: 6px;
+                    background-color: $purple;
+                    align-self: center;
+                    cursor: pointer;
+                }
+            }
+
+            .buttonContainer {
+                display: flex;
+                gap: 8px;
+
+                div {
+                    justify-content: center;
+                    width: 100%;
+                    padding: 8px;
+                    gap: 4px;
+                    align-items: center;
+                    display: flex;
+                }
+            }
+        }
+    }
+}

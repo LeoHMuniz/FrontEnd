@@ -1,0 +1,127 @@
+@font-face {
+    font-family: "Baloo2";
+    src: url(./assets/fonts/Baloo2-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url(./assets/fonts/Roboto-Regular.ttf);
+}
+
+//Yellow
+$yellow-light: #f1e9c9;
+$yellow: #dbac2c;
+$yellow-dark: #c47f17;
+//Purple
+$purple-light: #ebe5f9;
+$purple: #8047f8;
+$purple-dark: #4b2995;
+//Base (gray)
+$base-title: #272221;
+$base-subtitle: #403937;
+$base-text: #574f4d;
+$base-label: #8d8686;
+$base-hover: #d7d5d5;
+$base-button: #e6e5e5;
+$base-input: #ededed;
+$base-card: #f3f2f2;
+$base-background: #fafafa;
+$white: #ffffff;
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: $base-background;
+}
+
+//Typography
+.titleXl {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 130%;
+    font-family: "Baloo2";
+}
+
+.titleL {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 130%;
+    font-family: "Baloo2";
+}
+
+.titleM {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 130%;
+    font-family: "Baloo2";
+}
+
+.titleS {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 130%;
+    font-family: "Baloo2";
+}
+
+.titleXS {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 130%;
+    font-family: "Baloo2";
+}
+
+.textL {
+    font-size: 20px;
+    font-family: "Roboto";
+    font-weight: 500;
+    line-height: 130%;
+}
+
+.textM {
+    font-size: 16px;
+    font-family: "Roboto";
+    font-weight: 500;
+    line-height: 130%;
+}
+
+.textS {
+    font-size: 14px;
+    font-family: "Roboto";
+    font-weight: 400;
+    line-height: 130%;
+}
+
+.textXS {
+    font-size: 12px;
+    font-family: "Roboto";
+    font-weight: 700;
+    line-height: 130%;
+}
+
+.tag {
+    font-size: 10px;
+    font-family: "Roboto";
+    font-weight: 700;
+    line-height: 130%;
+}
+
+.buttonG {
+    font-size: 14px;
+    font-family: "Roboto";
+    font-weight: 700;
+    line-height: 160%;
+}
+
+.buttonM {
+    font-size: 12px;
+    font-family: "Roboto";
+    font-weight: 400;
+    line-height: 160%;
+}
+
+.icon {
+    color:$base-background;
+    padding:8px;
+    border-radius:100px;
+}

@@ -1,0 +1,90 @@
+@import "../globalStyle.scss";
+
+.selectedCoffeesContainer {
+    display: flex;
+    flex-direction: column;
+    gap:24px;
+    
+    hr {
+        border-top: 1px solid $base-button;
+        width: 100%;
+    }
+
+    .reviewCardContainer {
+        display: flex;
+        justify-content: space-between;
+
+        .reviewCard {
+            display: flex;
+            gap: 20px;
+            flex-direction: row;
+
+            img {
+                width: 64px;
+                height: 64px;
+            }
+
+            .coffeeTitle {
+                margin: 8px 0;
+            }
+
+            .textM {
+                color: $base-subtitle;
+            }
+
+            .buttonsContainer {
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+
+                .buttonRemoveContainer {
+                    padding: 8px;
+                    text-align: center;
+                    cursor: pointer;
+                    align-items: center;
+                    color: $base-text;
+                    display: flex;
+                    gap: 4px;
+
+                    .buttonM {
+                        text-transform: uppercase;
+                    }
+                }
+
+                .buttonInput {
+                    align-items: center;
+                    padding: 8px;
+                    outline: none;
+                    border: none;
+                    border-radius: 6px;
+                    height: 22px;
+                    background-color: $base-button;
+                    color: $base-title;
+
+                    .symbols {
+                        color: $purple-dark;
+                        align-items: center;
+                        cursor: pointer;
+                    }
+
+                    input::-webkit-inner-spin-button,
+                    input::-webkit-outer-spin-button {
+                        margin: 0;
+                        display: none;
+                    }
+
+                    input {
+                        user-select: none;
+                        outline: none;
+                        text-align: center;
+                        border: none;
+                        height: 20px;
+                        width: 20px;
+                        color: $base-title;
+                        background-color: $base-button;
+                    }
+                }
+            }
+        }
+    }
+}

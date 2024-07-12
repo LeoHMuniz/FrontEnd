@@ -1,0 +1,51 @@
+@import "../globalStyle.scss";
+
+.headerSection {
+    header {
+        height: 104px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+            text-decoration: none;
+            color:inherit;
+        }
+
+        img {
+            width: 84px;
+            height: 40px;
+        }
+
+        .cartDiv {
+            align-items: center;
+            display: flex;
+            gap: 12px;
+
+            div {
+                border-radius: 6px;
+                padding: 2px 8px;
+                align-items: center;
+            }
+
+            .locationDiv {
+                display: flex;
+                flex-direction: row;
+                background-color: $purple-light;
+                color: $purple-dark;
+                padding: 8px;
+            }
+
+            .shoppingCart {
+                padding: 8px;
+                display: flex;
+                justify-content: center;
+                flex: 1;
+                background-color: $yellow-light;
+                color: $yellow-dark;
+            }
+        }
+    }
+}

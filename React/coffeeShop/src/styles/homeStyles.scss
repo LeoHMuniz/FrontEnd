@@ -1,0 +1,74 @@
+@import "../globalStyle.scss";
+
+.introductionDiv {
+    padding: 120px 0;
+    margin: auto;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+
+    div {
+        display:flex;
+        flex-direction: column;
+        flex: 1;
+        max-width: 588px;
+    }
+
+    .titleXl {
+        margin: 0;
+        color: $base-title;
+    }
+
+    .textL {
+        color: $base-subtitle;
+    }
+
+    .textM {
+        color: $base-text;
+    }
+
+    .instructionsDiv {
+        height: 84px;
+        width: 567px;
+        display: flex;
+        flex-wrap: wrap;
+
+        .leftDivs {
+            width: 231px;
+        }
+
+        .rightDivs {
+            width: 294px;
+        }
+
+        div {
+            display: flex;
+            flex-direction: row;
+            margin-right: 20px;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cartIcon {
+            background-color: $yellow-dark;
+        }
+
+        .packageIcon {
+            background-color: $base-text;
+        }
+
+        .timerIcon {
+            background-color: $yellow;
+        }
+
+        .coffeeIcon {
+            background-color: $purple-dark;
+        }
+    }
+
+    .bigCoffee {
+        width: 476px;
+        height: 360px;
+    }
+}

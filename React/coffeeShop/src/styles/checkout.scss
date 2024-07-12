@@ -1,0 +1,172 @@
+@import "../globalStyle.scss";
+
+.checkoutSection {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    text-align: left;
+
+    .completeDiv {
+        width: 640px;
+
+        .formsContainer {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 6px;
+            gap: 32px;
+            background-color: $base-card;
+
+            header {
+                display: flex;
+                gap: 8px;
+
+                .locationIcon {
+                    color: $yellow-dark;
+                }
+            }
+
+            div {
+                display: flex;
+                flex-direction: column;
+
+                .textM {
+                    margin: 0;
+                    color: $base-subtitle;
+                }
+
+                .textS {
+                    margin: 0;
+                    color: $base-text;
+                }
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                input {
+                    padding: 12px;
+                    outline: none;
+                    border: 1px solid $base-button;
+                    border-radius: 4px;
+                    color: $base-label;
+                    background-color: $base-input;
+                }
+
+                .cepInput {
+                    width: fit-content;
+                }
+
+                .complInput {
+                    flex: 1;
+                }
+
+                .cityInput {
+                    flex: 1;
+                }
+
+                .ufInput {
+                    width: 60px;
+                }
+
+                div {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 12px;
+                }
+            }
+        }
+
+        .paymentContainer {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            background-color: $base-card;
+            border-radius: 6px;
+
+            header {
+                display: flex;
+                gap: 8px;
+            }
+
+            .textM {
+                margin: 0;
+                color: $base-subtitle;
+            }
+
+            .textS {
+                margin: 0;
+                color: $base-text;
+            }
+
+            .paymentIcon {
+                color: $purple;
+            }
+
+            .paymentMethodsContainer {
+                display: flex;
+                gap: 12px;
+
+                button:hover {
+                    background-color: $base-hover;
+                }
+
+                .buttonM {
+                    color: $base-text;
+                    text-transform: uppercase;
+                    background-color: $base-button;
+                    border: none;
+                    border-radius: 6px;
+                    padding: 16px;
+                    flex: 1;
+
+                    div {
+                        display: flex;
+                        gap: 12px;
+                        text-align: center;
+                        align-items: center;
+
+                        span {
+                            align-items: center;
+                            text-wrap: nowrap;
+                        }
+                    }
+                }
+
+                .selected {
+                    background-color: $purple-light;
+                    outline: 1px solid $purple;
+                }
+            }
+        }
+    }
+
+    .dataContainer,
+    .coffeeContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .coffeeDiv {
+        width: 448px;
+
+        .coffeeContainer {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 6px 44px;
+            gap: 24px;
+            background-color: $base-card;
+
+            .coffeesContainer {
+                max-height: 300px;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+        }
+    }
+}

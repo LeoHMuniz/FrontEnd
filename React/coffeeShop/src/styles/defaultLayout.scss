@@ -1,0 +1,10 @@
+@import "../globalStyle.scss";
+
+
+.DefaultLayout {
+    display:flex;
+    flex-direction: column;
+    max-width: 1120px;
+    margin: 0 auto;
+
+}
