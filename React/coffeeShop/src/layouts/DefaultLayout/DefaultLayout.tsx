@@ -16,26 +16,30 @@ type Coffee = {
 
 const coffeesOncart: Array<Coffee> = []
 const paymentMethod: string = ""
-
+const changesInContext: number = 0
 
 export const coffeeContext = React.createContext();
 export const methodContext = React.createContext();
+export const changesContext = React.createContext();
 
 export const DefaultLayout = ({ children }: ReactElement) => {
     const [coffeeCart, setCoffeeCart] = useState(coffeesOncart)
     const [method, setMethod] = useState(paymentMethod)
+    const [changes, setChanges] = useState(changesInContext)
 
     return (
-        <coffeeContext.Provider value={[coffeeCart, setCoffeeCart]}>
-            <methodContext.Provider value={[method, setMethod]}>
+        <changesContext.Provider value={[changes, setChanges]} >
+            <coffeeContext.Provider value={[coffeeCart, setCoffeeCart]}>
+                <methodContext.Provider value={[method, setMethod]}>
 
-                <div className="DefaultLayout">
-                    <Header />
-                    <Outlet />
-                </div>
+                    <div className="DefaultLayout">
+                        <Header />
+                        <Outlet />
+                    </div>
 
-            </methodContext.Provider>
-        </coffeeContext.Provider>
+                </methodContext.Provider>
+            </coffeeContext.Provider>
+        </changesContext.Provider>
     )
 
 }

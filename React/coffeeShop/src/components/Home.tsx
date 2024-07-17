@@ -1,6 +1,5 @@
-import React from 'react'
 import bigCoffee from '../assets/bigCoffee.svg'
-import { Coffee, Package, ShoppingCart, ShoppingCartSimple, Timer } from '@phosphor-icons/react'
+import { Coffee, Package, ShoppingCart, Timer } from '@phosphor-icons/react'
 import "../styles/homeStyles.scss"
 import Market from './Market'
 

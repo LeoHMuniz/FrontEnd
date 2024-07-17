@@ -1,0 +1,22 @@
+@import "../globalStyle.scss";
+
+.totalItemsContainer {
+    display: flex;
+    flex-direction: column;
+    gap:12px;
+    justify-content: space-between;
+
+    .textS {
+        color:$base-text;
+    }
+
+    .textL{
+        color:$base-subtitle;
+        font-weight: 800;
+    }
+
+    div {
+        display: flex;
+        justify-content: space-between;
+    }
+}

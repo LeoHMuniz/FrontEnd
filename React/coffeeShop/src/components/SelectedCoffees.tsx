@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { coffeeContext } from '../layouts/DefaultLayout/DefaultLayout'
+import { changesContext, coffeeContext } from '../layouts/DefaultLayout/DefaultLayout'
 import { Minus, Plus, Trash } from '@phosphor-icons/react'
 import '../styles/selectedCoffee.scss'
 
@@ -17,18 +17,24 @@ type Coffee = {
     value: number
 }
 
-export default function SelectedCoffees(coffee: Coffees, index: number) {
+export default function SelectedCoffees({ coffee }: Coffees, index: number) {
 
     const [coffeeCart, setCoffeeCart] = useContext(coffeeContext)
-    const [coffeeActualValue, setCoffeeActualValue] = useState(coffee.coffee.value)
-    const [coffeesRemoved, setCoffeesRemoved] = useState<Coffees>()
+    const [changesOnCoffee, setChangesOnCoffee] = useContext(changesContext)
+    const [coffeeActualValue, setCoffeeActualValue] = useState(coffee.value)
 
-    function decideOnCoffee(symbol: string) {
+
+    function removingCoffee(location: number) {
+        let removingCoffee = coffeeCart.filter(coffee => coffee.id !== location)
+        setCoffeeCart(removingCoffee)
+    }
+
+    function decideOnCoffee(symbol: string, location: number) {
         if (symbol === "minus" && coffeeActualValue - 1 === 0) {
-            console.log("remove")
-            setCoffeesRemoved(coffeeCart.splice(coffeeCart[coffee.coffee.id], 1))
+            let coffeesRemoved = coffeeCart.filter(coffee => coffee.id !== location)
+            setCoffeeCart(coffeesRemoved)
         }
-        if (symbol === "minus" && coffeeActualValue > 0) {
+        if (symbol === "minus" && coffeeActualValue > 1) {
             subOnCoffee()
         }
         if (symbol === "plus") {
@@ -40,12 +46,14 @@ export default function SelectedCoffees(coffee: Coffees, index: number) {
     }
 
     function sumOnCoffee() {
-        // setCoffeeActualValue(coffeeActualValue + coffeePrice)
+        coffee.value = coffeeActualValue + 1
+        setChangesOnCoffee(changesOnCoffee+1)
         setCoffeeActualValue(coffeeActualValue + 1)
     }
-
+    
     function subOnCoffee() {
-        // setCoffeeActualValue(coffeeActualValue - coffeePrice)
+        coffee.value = coffeeActualValue - 1
+        setChangesOnCoffee(changesOnCoffee+1)
         setCoffeeActualValue(coffeeActualValue - 1)
     }
 
@@ -54,31 +62,31 @@ export default function SelectedCoffees(coffee: Coffees, index: number) {
             <div className="reviewCardContainer">
                 <div className="reviewCard">
                     <img
-                        src={coffee.coffee.src}
+                        src={coffee.src}
                         alt=""
                     />
                     <div className="coffeeInfo">
-                        <h4 className="textM coffeeTitle">{coffee.coffee.name}</h4>
+                        <h4 className="textM coffeeTitle">{coffee.name}</h4>
                         <div className="buttonsContainer">
                             <div className="buttonInput">
-                                <span className="symbols"><Minus size={14} weight="bold" onClick={() => decideOnCoffee("minus")} /></span>
+                                <span className="symbols"><Minus size={14} weight="bold" onClick={() => decideOnCoffee("minus", coffee.id)} /></span>
                                 <input type="number" readOnly className='textM' value={coffeeActualValue} />
-                                <span className="symbols"><Plus size={14} weight="bold" onClick={() => decideOnCoffee("plus")} /></span>
+                                <span className="symbols"><Plus size={14} weight="bold" onClick={() => decideOnCoffee("plus", coffee.id)} /></span>
                             </div>
                             <div className="buttonInput buttonRemoveContainer">
                                 <Trash size={16} className="symbols" />
-                                <span className="buttonM" onClick={() => console.log(coffeeCart)}>remover</span>
+                                <span className="buttonM" onClick={() => removingCoffee(coffee.id)}>remover</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="priceContainer">
                     <span className="textM">
-                        R$ {(coffee.coffee.price * coffeeActualValue).toFixed(2)}
+                        R$ {(coffee.price * coffeeActualValue).toFixed(2)}
                     </span>
                 </div>
             </div>
-            {coffee.coffee.id + 1 < coffeeCart.length ? <hr /> : ""}
+            {coffee.id + 1 < coffeeCart.length ? <hr /> : ""}
         </div>
     )
 

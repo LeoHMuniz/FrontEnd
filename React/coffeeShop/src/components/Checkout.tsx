@@ -4,6 +4,7 @@ import PaymentContainer from './PaymentContainer';
 import { coffeeContext } from '../layouts/DefaultLayout/DefaultLayout'
 import { useContext } from 'react'
 import SelectedCoffees from "./SelectedCoffees";
+import TotalPrice from "./TotalPrice";
 
 
 export default function Checkout() {
@@ -18,7 +19,7 @@ export default function Checkout() {
     value: number
   }
 
-  const [coffeeCart, setCoffeeCart] = useContext(coffeeContext)
+  const [coffeeCart] = useContext(coffeeContext)
 
   return (
     <section className="checkoutSection">
@@ -33,13 +34,14 @@ export default function Checkout() {
         <h4 className="titleXS">Cafés selecionados</h4>
         <div className="coffeeContainer">
           <div className="coffeesContainer">
-
             {coffeeCart.map((coffee: Coffee, index: number) => {
               return (
-                <SelectedCoffees coffee={coffee}  key={index}/>
+                <SelectedCoffees coffee={coffee} key={index} />
               )
             })}
-
+          </div>
+          <div className="priceContainer">
+            <TotalPrice />
           </div>
         </div>
       </div>

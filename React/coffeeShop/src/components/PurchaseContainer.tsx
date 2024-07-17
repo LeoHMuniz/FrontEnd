@@ -1,7 +1,6 @@
 import { Minus, Plus, ShoppingCartSimple } from '@phosphor-icons/react'
 import { useState, useContext } from 'react'
 import { coffeeContext } from '../layouts/DefaultLayout/DefaultLayout'
-import { useGlobalState } from "../GlobalStates/paymentMethodState"
 import "../styles/marketStyles.scss"
 
 type Coffee = {
@@ -19,7 +18,7 @@ type ActualCoffee = {
 }
 
 
-export default function PurchaseContainer(actualCoffee: ActualCoffee) {
+export default function PurchaseContainer({actualCoffee}: ActualCoffee) {
 
     const [actualValue, setActualValue] = useState(0);
     const [actualPrice, setActualPrice] = useState(0);
@@ -27,10 +26,10 @@ export default function PurchaseContainer(actualCoffee: ActualCoffee) {
 
     function decideOnCoffee(symbol: string) {
         if (symbol === "minus" && actualValue > 0) {
-            subOnCoffee(actualCoffee.actualCoffee.price)
+            subOnCoffee(actualCoffee.price)
         }
         if (symbol === "plus") {
-            sumOnCoffee(actualCoffee.actualCoffee.price)
+            sumOnCoffee(actualCoffee.price)
         }
         else {
             return
@@ -56,15 +55,15 @@ export default function PurchaseContainer(actualCoffee: ActualCoffee) {
     return (
 
         <div
-            key={actualCoffee.actualCoffee.id}
+            key={actualCoffee.id}
             className="coffeeCard">
             <img
-                src={actualCoffee.actualCoffee.src}
+                src={actualCoffee.src}
                 alt=""
             />
             <div>
                 <div className="categoryContainer">
-                    {actualCoffee.actualCoffee.category.map((category: String, index: number) => {
+                    {actualCoffee.category.map((category: String, index: number) => {
                         return (
                             <span
                                 className="tag"
@@ -73,8 +72,8 @@ export default function PurchaseContainer(actualCoffee: ActualCoffee) {
                         )
                     })}
                 </div>
-                <h3 className="titleS">{actualCoffee.actualCoffee.name}</h3>
-                <p className="textS">{actualCoffee.actualCoffee.description}</p>
+                <h3 className="titleS">{actualCoffee.name}</h3>
+                <p className="textS">{actualCoffee.description}</p>
             </div>
             <div>
                 <div className="purchaseContainer">
@@ -85,7 +84,7 @@ export default function PurchaseContainer(actualCoffee: ActualCoffee) {
                             <input type="number" readOnly value={actualValue} className='textM' />
                             <span><Plus size={12} weight="bold" onClick={() => decideOnCoffee("plus")} /></span>
                         </div>
-                        <a className="button" onClick={() => updateCart(actualCoffee.actualCoffee)}>
+                        <a className="button" onClick={() => updateCart(actualCoffee)}>
                             <ShoppingCartSimple size={22} className="icon cartIcon" weight="fill" />
                         </a>
                     </div>

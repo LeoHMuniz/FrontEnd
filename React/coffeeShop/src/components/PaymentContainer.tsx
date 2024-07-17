@@ -1,13 +1,8 @@
 import { Bank, CreditCard, CurrencyDollar, Money } from '@phosphor-icons/react'
 import { coffeeContext, methodContext } from '../layouts/DefaultLayout/DefaultLayout'
-import { setGlobalState } from '../GlobalStates/paymentMethodState'
-import { useState, useContext } from 'react'
+import { useContext } from 'react'
 
 export default function PaymentContainer() {
-
-    const handleMethod = (method: string) => {
-        setGlobalState("defaultMethod", method)
-    }
 
     type Methods = {
         id: number,
@@ -16,8 +11,7 @@ export default function PaymentContainer() {
         icon: any
     }
 
-    const [method, setMethod] = useContext(methodContext);
-    const [coffeeCart, setCoffeeCart] = useContext(coffeeContext)
+    const [method, setMethod]:Methods | any = useContext(methodContext);
 
     const methodList = [{
         id: 0,
@@ -30,7 +24,8 @@ export default function PaymentContainer() {
         name: "Cartão de débito",
         value: "debitCard",
         icon: <Bank size={16} className="paymentIcon" />,
-    }, {
+    }, 
+    {
         id: 2,
         name: "Dinheiro",
         value: "money",
@@ -40,7 +35,6 @@ export default function PaymentContainer() {
 
     function selectPaymentMethod(method: string) {
         setMethod(method);
-        handleMethod(method)
     }
 
     return (
