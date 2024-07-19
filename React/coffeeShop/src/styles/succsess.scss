@@ -1,0 +1,62 @@
+@import "../globalStyle.scss";
+
+.successSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+
+    .titleL {
+        margin: 0;
+        color: $yellow-dark;
+    }
+
+    .textL {
+        margin: 0 0 30px 0;
+        color: $base-subtitle;
+    }
+
+    .textM {
+        text-transform: capitalize;
+    }
+
+    .instructionsContainer {
+        border: solid 1px $yellow;
+        border-radius: 6px 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        padding: 40px;
+        flex: 1;
+
+        div {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+
+            .textM {
+                color: $base-text;
+            }
+
+            .mapPinIcon {
+                background-color: $purple-dark;
+            }
+
+            .timerIcon {
+                background-color: $yellow;
+            }
+
+            .moneyIcon {
+                background-color: $yellow-dark;
+            }
+        }
+    }
+
+    .imgContainer {
+        img {
+            width: 492px;
+            height: 293px;
+            margin-top: 82px;
+        }
+    }
+}

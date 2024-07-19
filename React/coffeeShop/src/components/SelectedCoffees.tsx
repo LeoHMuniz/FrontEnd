@@ -26,12 +26,14 @@ export default function SelectedCoffees({ coffee }: Coffees, index: number) {
 
     function removingCoffee(location: number) {
         let removingCoffee = coffeeCart.filter(coffee => coffee.id !== location)
+
         setCoffeeCart(removingCoffee)
     }
 
     function decideOnCoffee(symbol: string, location: number) {
         if (symbol === "minus" && coffeeActualValue - 1 === 0) {
             let coffeesRemoved = coffeeCart.filter(coffee => coffee.id !== location)
+            setCoffeeActualValue(coffeeActualValue)
             setCoffeeCart(coffeesRemoved)
         }
         if (symbol === "minus" && coffeeActualValue > 1) {
@@ -47,13 +49,13 @@ export default function SelectedCoffees({ coffee }: Coffees, index: number) {
 
     function sumOnCoffee() {
         coffee.value = coffeeActualValue + 1
-        setChangesOnCoffee(changesOnCoffee+1)
+        setChangesOnCoffee(changesOnCoffee + 1)
         setCoffeeActualValue(coffeeActualValue + 1)
     }
-    
+
     function subOnCoffee() {
         coffee.value = coffeeActualValue - 1
-        setChangesOnCoffee(changesOnCoffee+1)
+        setChangesOnCoffee(changesOnCoffee + 1)
         setCoffeeActualValue(coffeeActualValue - 1)
     }
 
@@ -86,7 +88,7 @@ export default function SelectedCoffees({ coffee }: Coffees, index: number) {
                     </span>
                 </div>
             </div>
-            {coffee.id + 1 < coffeeCart.length ? <hr /> : ""}
+            {coffee.id < coffeeCart.length ? <hr /> : ""}
         </div>
     )
 

@@ -11,7 +11,7 @@ export default function PaymentContainer() {
         icon: any
     }
 
-    const [method, setMethod]:Methods | any = useContext(methodContext);
+    const [method, setMethod]: String = useContext(methodContext);
 
     const methodList = [{
         id: 0,
@@ -24,7 +24,7 @@ export default function PaymentContainer() {
         name: "Cartão de débito",
         value: "debitCard",
         icon: <Bank size={16} className="paymentIcon" />,
-    }, 
+    },
     {
         id: 2,
         name: "Dinheiro",
@@ -52,9 +52,9 @@ export default function PaymentContainer() {
                         return (
                             <button
                                 key={index}
-                                className={method == actualMethod.value ? `buttonM selected` : `buttonM`}
-                                onClick={() => selectPaymentMethod(actualMethod.value)}
-                                value={actualMethod.value}>
+                                className={method == actualMethod.name ? `buttonM selected` : `buttonM`}
+                                onClick={() => selectPaymentMethod(actualMethod.name)}
+                                value={actualMethod.name}>
                                 <div>
                                     <span>
                                         {actualMethod.icon}

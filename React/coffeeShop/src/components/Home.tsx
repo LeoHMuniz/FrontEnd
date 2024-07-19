@@ -6,6 +6,7 @@ import Market from './Market'
 export default function Home() {
   return (
     <>
+    {/* Adicionar função para pagar com pix? pagar com diferentes bandeiras de cartão de crédito */}
       <section className="faceSection">
         <div className="introductionDiv">
           <div>

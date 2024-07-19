@@ -11,7 +11,7 @@
 
         a {
             text-decoration: none;
-            color:inherit;
+            color: inherit;
         }
 
         img {
@@ -45,6 +45,26 @@
                 flex: 1;
                 background-color: $yellow-light;
                 color: $yellow-dark;
+                position: relative;
+
+                .items {
+                    color: $white;
+                    justify-content: center;
+                    display:flex;
+                    padding: 0;
+                    margin: 0;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 100px;
+                    background-color: $yellow-dark;
+                    position: absolute;
+                    top: -8px;
+                    right: -8px;
+
+                    span{
+                        align-items: center;
+                    }
+                }
             }
         }
     }

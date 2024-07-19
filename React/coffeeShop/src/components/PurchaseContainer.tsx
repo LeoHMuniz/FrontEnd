@@ -1,6 +1,6 @@
 import { Minus, Plus, ShoppingCartSimple } from '@phosphor-icons/react'
 import { useState, useContext } from 'react'
-import { coffeeContext } from '../layouts/DefaultLayout/DefaultLayout'
+import { changesContext, coffeeContext } from '../layouts/DefaultLayout/DefaultLayout'
 import "../styles/marketStyles.scss"
 
 type Coffee = {
@@ -18,11 +18,12 @@ type ActualCoffee = {
 }
 
 
-export default function PurchaseContainer({actualCoffee}: ActualCoffee) {
+export default function PurchaseContainer({ actualCoffee }: ActualCoffee) {
 
     const [actualValue, setActualValue] = useState(0);
     const [actualPrice, setActualPrice] = useState(0);
     const [coffeeCart, setCoffeeCart] = useContext<Array<Coffee>>(coffeeContext)
+    const [changesOnCoffee, setChangesOnCoffee] = useContext(changesContext)
 
     function decideOnCoffee(symbol: string) {
         if (symbol === "minus" && actualValue > 0) {
@@ -48,7 +49,8 @@ export default function PurchaseContainer({actualCoffee}: ActualCoffee) {
 
     function updateCart(coffeeProps: Coffee) {
         coffeeProps.value = actualValue
-        setCoffeeCart((prevstate:Coffee) => [...prevstate, coffeeProps])
+        setChangesOnCoffee(changesOnCoffee + 1)
+        setCoffeeCart((prevstate: Coffee) => [...prevstate, coffeeProps])
     }
 
 

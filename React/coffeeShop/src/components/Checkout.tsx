@@ -1,10 +1,11 @@
 import "../styles/checkout.scss"
 import FormsContainer from './FormsContainer';
 import PaymentContainer from './PaymentContainer';
-import { coffeeContext } from '../layouts/DefaultLayout/DefaultLayout'
+import { coffeeContext, infoContext, methodContext } from '../layouts/DefaultLayout/DefaultLayout'
 import { useContext } from 'react'
 import SelectedCoffees from "./SelectedCoffees";
 import TotalPrice from "./TotalPrice";
+import { Link } from "react-router-dom";
 
 
 export default function Checkout() {
@@ -20,6 +21,8 @@ export default function Checkout() {
   }
 
   const [coffeeCart] = useContext(coffeeContext)
+  const [method] = useContext(methodContext)
+  const [clientInformations] = useContext(infoContext);
 
   return (
     <section className="checkoutSection">
@@ -42,6 +45,11 @@ export default function Checkout() {
           </div>
           <div className="priceContainer">
             <TotalPrice />
+          </div>
+          <div className="confirmButton">
+            <Link to={{ pathname: "/confirm", state: [method, clientInformations]}} className="buttonG">
+              Confirmar pedido
+            </Link>
           </div>
         </div>
       </div>

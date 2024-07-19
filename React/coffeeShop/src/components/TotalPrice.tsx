@@ -25,10 +25,8 @@ export default function TotalPrice() {
     const [freight, setFreight] = useState(coffeeCart.length * 1.5);
 
     useEffect(() => {
-        console.log("rendering useEffect")
         updatePrices()
-        console.log(price, freight, totalPrice)
-    }, [changesOnCoffee])
+    }, [changesOnCoffee, coffeeCart])
 
     function updatePrices() {
         setPrice(coffeeCart.reduce((acc: number, cur: Coffee) => acc + (cur.value * cur.price), 0))
